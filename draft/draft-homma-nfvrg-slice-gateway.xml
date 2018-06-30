@@ -61,14 +61,14 @@
 <?rfc subcompact="no" ?> 
 <!-- keep one blank line between list items --> 
 <!-- end of list of popular I-D processing instructions --> 
-<rfc category="info" docName="draft-homma-coms-slice-gateway-01">
+<rfc category="info" docName="draft-homma-nfvrg-slice-gateway-00">
   <!-- ***** FRONT MATTER ***** --> 
 
 
 
 
   <front>
-    <title abbrev="draft-homma-coms-slice-gateway">
+    <title abbrev="draft-homma-nfvrg-slice-gateway">
     Gateway Function for Network Slicing
     </title>
 
@@ -117,7 +117,7 @@
       </address>
     </author>
 
-    <date day="5" month="March" year="2018"/>
+    <date day="2" month="July" year="2018"/>
 
     <area>Operation Area</area>
 
@@ -263,7 +263,7 @@
       </t>
       
       <t hangText="Slice Gateway Function (SLG):">
-      An SLG is a function or a group of functions to connect/disconnect NS subnets. The role is described in 
+      An SLG is a function or a group of functions to connect/disconnect NS subnets. The roles are described in 
       the following sections.
       </t>
       
@@ -289,8 +289,8 @@
     
     <section title="Motivations and Roles of SLG">
       <t>
-      SLG main role is the enablement of interworkings between data plane with management and control elements for 
-      controlling and orchestrating end-to-end slices.
+      One of the main roles of SLG is the enablement of interworkings between data plane with management and control 
+      elements for controlling and orchestrating end-to-end slices.
       </t>
       
       <t>
@@ -381,40 +381,31 @@
 
 
 
-    <section title="Architecture Overview of NS Management">
+    <section title="Architecture of Network Slicing System">
+      <t>
+      NSs are composed of several (virtual) network functions and links, and the charactaristics of each NS 
+      are based on the assumed service. Also, some of NSs are deployed accross multiple administrative domains. 
+      For deploying the appropriate NSs based on each service requirements, a management system, which enables 
+      to control network resources totally within a domain, and interaction between such management systems are 
+      required. 
+      </t>
+      
+      <t>
+      An SLG is a network function, and SLGs are installed at edge of NS subnets. NSs are dynamically created, 
+      deleted, and moved depending on requests from network opertor orNS tenants. Therefore, some SLGs would be 
+      required to be VNF for flexible deployment.
+      </t>
+      
+      <t>
+      This section describes overview of NS management system architecture (<xref target="NS-MS"/>) and 
+      position of SLG in NFV (<xref target="SLG-NFV"/>).
+      </t>
+      
+      <section anchor="NS-MS" title="Network Slice Management System Architecture">
       <t>
       The architecture overview of NS management system is shown in  <xref target="fig_NS-Mng-Arch"/>.
-      Orchestrators manage whole resources including network elements and server resources (i.e., routing, 
-      bandwidth, compute or storage).
-      In this figure, the resources including network elements and server resources are managed by resource orchestrators 
-      installed in each domain, and the E2E-orchestrator and network service orchestrator handle resource orchestrators.
       </t>
-      
-      <t>
-      NSs are requested from NS tenants via the portal system and the order of creations of an NS is given to 
-      the E2E orchestrator from the portal system via BSS/OSS. When an NS across multiple administrative domains 
-      are requested, the portal system that received the request forwards the order to create NS subnets to the other 
-      infrastructure providers' systems via Cross-Segment Slice Manager. The details of COMS architecture are described 
-      in the architecture document ([I-D.qiang-coms-architecture]).
-      </t>
-      
-      <t>
-      SLGs are also controlled via orchestrators. An SLG basically belongs to a network element, and it might also 
-      belong to server resource if it runs as a VNF. (An example of position of SLG deployed as a VNF is shown in 
-      <xref target="app1"/>.)
-      </t>
-      
-      <t>
-      SLGs are located at the edges of each NS subnet. They translate data packets into the appropriate form and 
-      send them to the next NS subnet. SLGs located at the end of E2E-NSs additionally provide 
-      identification of data packets and select the assigned NS subnet based on the identification result.
-      </t>
-      
-      <t>
-      The information model used in this architecture is described in information model document 
-      (<xref target="I-D.qiang-coms-netslicing-information-model"/>).
-      </t>
-    
+
 <figure anchor="fig_NS-Mng-Arch"
         title="Overview of NS Management Architecture">
   <artwork><![CDATA[
@@ -459,6 +450,74 @@
                  TNS-Orch./TNS-O:Transport Network Slice Orchestrator
   ]]></artwork>
 </figure>
+
+      <t>
+      Orchestrators manage whole resources including network elements and server resources (i.e., routing, 
+      bandwidth, compute or storage).
+      In this figure, the resources including network elements and server resources are managed by resource orchestrators 
+      installed in each domain, and the E2E-orchestrator and network service orchestrator handle resource orchestrators.
+      </t>
+      
+      <t>
+      NSs are requested from NS tenants via the portal system and the order of creations of an NS is given to 
+      the E2E orchestrator from the portal system via BSS/OSS. When an NS across multiple administrative domains 
+      are requested, the portal system that received the request forwards the order to create NS subnets to the other 
+      infrastructure providers' systems via Cross-Segment Slice Manager. The details of COMS architecture are described 
+      in the architecture document ([I-D.qiang-coms-architecture]).
+      </t>
+      
+      <t>
+      SLGs are also controlled via orchestrators. An SLG basically belongs to a network element, and it might also 
+      belong to server resource if it runs as a VNF. (The position of SLG deployed as a VNF is shown in 
+      <xref target="SLG-NFV"/>.)
+      </t>
+      
+      <t>
+      The information model used in this architecture is described in information model document 
+      (<xref target="I-D.qiang-coms-netslicing-information-model"/>).
+      </t>
+      </section>
+    
+      <section anchor="SLG-NFV"
+    		title="Position of SLG on ETSI NFV MANO">
+      <t>
+      Some SLGs and the controllers are deployed and run on NSs as VNFs. 
+      An arechitecture for managing lifecycle of VNFs is under standardization 
+      in ETS NFV MANO.
+      </t>
+      
+      <t>
+      The mapping of SLG as a VM into ETSI NFV MANO architecture is described in 
+      <xref target="fig_SLG-Position-MANO"/>. In some cases, SLGs are deployed 
+      with containor. VNFs are parts of NS compositions and 
+      NFV orchestrator would be controlled by upper control entities such as 
+      resource orchestrator.
+      </t>
+
+<figure anchor="fig_SLG-Position-MANO"
+		title="Position of SLG as a VM on ETSI NFV MANO">
+  <artwork><![CDATA[
+  
+         OSS/BSS, Service-Orch, Resource-Orch
+           |                |
+           |                |
+         +-v-------+      +-v----------+ 
+         |SLG-Ctrl |<-----+ NFV Orch.  | 
+         +-+-------+      +-+----------+ 
+           |                |           
+         ,-v-------.        |           
+         |  SLG    |        |           
+         :=========:      +-v----------+ 
+         |VM(GstOS)|<-----+VNF Manager | 
+         `---------'      +-+----------+ 
+         +---------+        |           
+         | HostOS/ |      +-v----------+ 
+         | Server  |<-----| VIM        | 
+         +---------+      +------------+ 
+  ]]></artwork>
+</figure>
+    
+    </section>
     
     
     </section>
@@ -782,7 +841,7 @@
     <section title="SLG Types Depending on Locations on NS">
     <t>
     There are mainly three types of SLG for creating E2E-NS across multiple administrative domains.
-    The requirements of each SLG type are listed in <xref target="app2"/>.
+    The requirements of each SLG type are listed in <xref target="app1"/>.
     </t>
     
       <section title="Edge SLG(E-SLG)">
@@ -1153,43 +1212,8 @@ GW: Gateway Node
 
 
     <!-- Appendix -->
-    
-    <section anchor="app1"
-    		title="Position of SLG on ETSI NFV MANO">
-      <t>
-      The mapping of SLG as a VM into ETSI NFV MANO architecture is described in 
-      <xref target="fig_SLG-Position-MANO"/>.
-      </t>
 
-<figure anchor="fig_SLG-Position-MANO"
-		title="Position of SLG as a VM on ETSI NFV MANO">
-  <artwork><![CDATA[
-  
-         +---------------------------+
-         | BSS/OSS, Orchestrator     |
-         +-+---------------+---------+
-           |               |
-         +-v------+      +-v---------+ 
-         |SLG-Ctrl|      | NFV Orch. | 
-         +-+------+      +-+---------+ 
-           |               |           
-         ,-v------.        |           
-         |  SLG   |        |           
-         :========:      +-v---------+ 
-         |  VM    |<-----+ VNF Mngr. | 
-         `--------'      +-+---------+ 
-         +--------+        |           
-         |HostOS/ |      +-v---------+ 
-         |Server  |<-----| VIM       | 
-         +--------+      +-----------+ 
-  ]]></artwork>
-</figure>
-    
-    </section>
-    
-    
-    
-    <section anchor="app2"
+    <section anchor="app1"
     		title="Requirements for each SLG Type">
       <t>
       The requirements for each SLG type are listed in 
