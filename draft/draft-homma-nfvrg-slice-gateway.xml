@@ -15,54 +15,56 @@
 <?rfc subcompact="no"?>
 -->
 
-<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [ 
-<!-- One method to get references from the online citation libraries. 
-     There has to be one entity for each item to be referenced.  
-     An alternate method (rfc include) is described in the references. --> 
+<!-- test -->
+
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!-- One method to get references from the online citation libraries.
+     There has to be one entity for each item to be referenced.
+     An alternate method (rfc include) is described in the references. -->
 
 <!ENTITY RFC7348 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7348.xml">
-<!ENTITY RFC7665 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7665.xml"> 
+<!ENTITY RFC7665 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7665.xml">
 <!ENTITY RFC8300 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8300.xml">
 <!ENTITY I-D.draft-ietf-sfc-hierarchical SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-sfc-hierarchical-05.xml">
-<!ENTITY I-D.draft-netslices-usecases SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-netslices-usecases-02.xml"> 
+<!ENTITY I-D.draft-netslices-usecases SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-netslices-usecases-02.xml">
 <!--
 <!ENTITY I-D.draft-qiang-coms-architecture SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-architecture-00.xml">
 -->
 <!ENTITY I-D.draft-qiang-coms-netslicing-information-model SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-netslicing-information-model-01.xml">
-<!ENTITY I-D.draft-defoy-coms-subnet-interconnection SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-defoy-coms-subnet-interconnection-01.xml"> 
+<!ENTITY I-D.draft-defoy-coms-subnet-interconnection SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-defoy-coms-subnet-interconnection-01.xml">
 <!ENTITY I-D.draft-qiang-coms-netslicing-information-model SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-netslicing-information-model-01.xml">
 <!ENTITY I-D.draft-ietf-spring-segment-routing-mpls SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-spring-segment-routing-mpls-11.xml">
 <!ENTITY I-D.draft-ietf-6man-segment-routing-header SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-6man-segment-routing-header-08.xml">
 
 
-]> 
-<?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?> 
-<!-- used by XSLT processors --> 
-<!-- For a complete list and description of processing instructions (PIs),  
-      please see http://xml.resource.org/authoring/README.html. --> 
-<!-- Below are generally applicable Processing Instructions (PIs) that most I-Ds might want to use. 
-     (Here they are set differently than their defaults in xml2rfc v1.32) --> 
-<?rfc strict="yes" ?> 
-<!-- give errors regarding ID-nits and DTD validation --> 
-<!-- control the table of contents (ToC) --> 
-<?rfc toc="yes"?> 
-<!-- generate a ToC --> 
-<?rfc tocdepth="4"?> 
-<!-- the number of levels of subsections in ToC. default: 3 --> 
-<!-- control references --> 
-<?rfc symrefs="yes"?> 
-<!-- use symbolic references tags, i.e, [RFC2119] instead of [1] --> 
-<?rfc sortrefs="yes" ?> 
-<!-- sort the reference entries alphabetically --> 
-<!-- control vertical white space  
-     (using these PIs as follows is recommended by the RFC Editor) --> 
-<?rfc compact="yes" ?> 
-<!-- do not start each main section on a new page --> 
-<?rfc subcompact="no" ?> 
-<!-- keep one blank line between list items --> 
-<!-- end of list of popular I-D processing instructions --> 
+]>
+<?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+<!-- used by XSLT processors -->
+<!-- For a complete list and description of processing instructions (PIs),
+      please see http://xml.resource.org/authoring/README.html. -->
+<!-- Below are generally applicable Processing Instructions (PIs) that most I-Ds might want to use.
+     (Here they are set differently than their defaults in xml2rfc v1.32) -->
+<?rfc strict="yes" ?>
+<!-- give errors regarding ID-nits and DTD validation -->
+<!-- control the table of contents (ToC) -->
+<?rfc toc="yes"?>
+<!-- generate a ToC -->
+<?rfc tocdepth="4"?>
+<!-- the number of levels of subsections in ToC. default: 3 -->
+<!-- control references -->
+<?rfc symrefs="yes"?>
+<!-- use symbolic references tags, i.e, [RFC2119] instead of [1] -->
+<?rfc sortrefs="yes" ?>
+<!-- sort the reference entries alphabetically -->
+<!-- control vertical white space
+     (using these PIs as follows is recommended by the RFC Editor) -->
+<?rfc compact="yes" ?>
+<!-- do not start each main section on a new page -->
+<?rfc subcompact="no" ?>
+<!-- keep one blank line between list items -->
+<!-- end of list of popular I-D processing instructions -->
 <rfc category="info" docName="draft-homma-nfvrg-slice-gateway-00">
-  <!-- ***** FRONT MATTER ***** --> 
+  <!-- ***** FRONT MATTER ***** -->
 
 
 
@@ -90,10 +92,10 @@
         <email>homma.shunsuke@lab.ntt.co.jp</email>
       </address>
     </author>
-    
+
     <author fullname="Xavier de Foy" initials="X." surname="de Foy">
       <organization abbrev="InterDigital Inc.">InterDigital Inc.</organization>
-      
+
       <address>
         <postal>
           <street>1000 Sherbrooke West</street>
@@ -103,10 +105,10 @@
         <email>Xavier.Defoy@InterDigital.com</email>
       </address>
     </author>
-    
+
     <author fullname="Alex Galis" initials="A." surname="Galis">
       <organization abbrev="University College London">University College London</organization>
-      
+
       <address>
         <postal>
           <street>Torrington Place</street>
@@ -122,14 +124,14 @@
     <area>Operation Area</area>
 
     <workgroup>none</workgroup>
-    
+
     <keyword>Internet-Draft</keyword>
 
     <abstract>
-      <t>This document describes the roles and requirements for a slice gateway that is a data plane function 
-      or function group for connecting/disconnecting and compose/decompose network slice subnets and providing 
-      network slices from end to end.  The interworkings between management and control 
-      elements at the management and control planes with the gateway function for controlling and 
+      <t>This document describes the roles and requirements for a slice gateway that is a data plane function
+      or function group for connecting/disconnecting and compose/decompose network slice subnets and providing
+      network slices from end to end.  The interworkings between management and control
+      elements at the management and control planes with the gateway function for controlling and
       orchestrating end-to-end network slices are also presented in this document.
       </t>
     </abstract>
@@ -138,57 +140,57 @@
   <middle>
     <section title="Introduction">
       <t>
-      Network slicing is an approach to create separate virtual networks in support of service depending on several 
-      requirements on the same physical resources, and it enables networks to adapt to requirements, which is 
+      Network slicing is an approach to create separate virtual networks in support of service depending on several
+      requirements on the same physical resources, and it enables networks to adapt to requirements, which is
       diverse more, inexpensively and flexibly. It's also expected to enhance usability of
-      infrastructural networks for tenants and create new business opportunities. For example, by using 
-      network slices lent from infrastructure operators, other industrial companies can provide communication 
+      infrastructural networks for tenants and create new business opportunities. For example, by using
+      network slices lent from infrastructure operators, other industrial companies can provide communication
       services including ensurance of network transport without having physical infrastructure.
-      </t>
-      
-      <t>
-      From a business point of view, a slice includes a combination of all the relevant network resources, functions, 
-      and assets required to fulfill a specific business case or service, including OSS, BSS and DevOps processes.
-      </t>
-      
-      <t>
-      From the network infrastructure point of view, network slice requires the partitioning and assignment of a set of 
-      resources that can be used in an isolated, disjunctive or non- disjunctive manner for that slice.
-      </t>
-      
-      <t>
-      From the tenant point of view, network slice provides different capabilities, specifically in terms of their 
-      management and control capabilities, and how much of them the network service provider hands over to the slice 
-      tenant. As such there are two kinds of slices: (A) Inner slices, understood as the partitions used for 
-      internal services of the provider, retaining full control and management of them. (B) Outer slices, being those 
-      partitions hosting customer services, appearing to the customer as dedicated networks. 
-      </t>
-      
-      <t>
-      Network slices are established with combination of various technologies, such as software defined 
-      network (SDN), network function virtualization (NFV), or traffic engineering, and managed/operated with 
-      automation technologies such as orchestrator. 
       </t>
 
       <t>
-      Assumed use cases of network slices include establishment of virtual networks whose qualities are 
-      guaranteed from end to end under the supervision of multi-domain orchstrators. In such cases, a network slice 
-      subnet is created on each domain, such as access network and core network, and an end-to-end network slices is 
+      From a business point of view, a slice includes a combination of all the relevant network resources, functions,
+      and assets required to fulfill a specific business case or service, including OSS, BSS and DevOps processes.
+      </t>
+
+      <t>
+      From the network infrastructure point of view, network slice requires the partitioning and assignment of a set of
+      resources that can be used in an isolated, disjunctive or non- disjunctive manner for that slice.
+      </t>
+
+      <t>
+      From the tenant point of view, network slice provides different capabilities, specifically in terms of their
+      management and control capabilities, and how much of them the network service provider hands over to the slice
+      tenant. As such there are two kinds of slices: (A) Inner slices, understood as the partitions used for
+      internal services of the provider, retaining full control and management of them. (B) Outer slices, being those
+      partitions hosting customer services, appearing to the customer as dedicated networks.
+      </t>
+
+      <t>
+      Network slices are established with combination of various technologies, such as software defined
+      network (SDN), network function virtualization (NFV), or traffic engineering, and managed/operated with
+      automation technologies such as orchestrator.
+      </t>
+
+      <t>
+      Assumed use cases of network slices include establishment of virtual networks whose qualities are
+      guaranteed from end to end under the supervision of multi-domain orchstrators. In such cases, a network slice
+      subnet is created on each domain, such as access network and core network, and an end-to-end network slices is
       composed of connected subnets.
       </t>
 
       <t>
       Network slice subnets are built based on specification of the underlay network, and thus the used technologies
-      might vary. Therefore, a gateway function, which enables to connect subnets while adapting the differentiations 
+      might vary. Therefore, a gateway function, which enables to connect subnets while adapting the differentiations
       and forward data packets to/from the appropriate next subnet, is required.
       </t>
-      
-      
+
+
       <t>
-      In this document, the gateway function is called slice gateway or SLG, and the role and requirements 
-      are described.  Defining a new data plane technology is  not a goal of this draft. 
-      This draft aims to specify management-related requirements for an SLG, which may be 
-      implemented using existing data plane technologies. 
+      In this document, the gateway function is called slice gateway or SLG, and the role and requirements
+      are described.  Defining a new data plane technology is  not a goal of this draft.
+      This draft aims to specify management-related requirements for an SLG, which may be
+      implemented using existing data plane technologies.
       </t>
     </section>
 
@@ -197,131 +199,131 @@
       <t>
       <list style="hanging">
       <t hangText="Network Slicing:">
-      Network slicing is a technology or an approach to create separate virtual networks in support of 
-      services, depending on several requirements, on the same physical resources. This is possible by 
+      Network slicing is a technology or an approach to create separate virtual networks in support of
+      services, depending on several requirements, on the same physical resources. This is possible by
       combinations of several network technologies.
       </t>
-      
+
       <t hangText="Network Slice (NS):">
-      An NS is a virtual network established on network infrastructure. Some include additional network 
-      functions such as firewall or load-balancer in addition to basically forwarding functions such as 
-      switches or routers. It has an overlay architecture and is independent from the underlay network's 
+      An NS is a virtual network established on network infrastructure. Some include additional network
+      functions such as firewall or load-balancer in addition to basically forwarding functions such as
+      switches or routers. It has an overlay architecture and is independent from the underlay network's
       topology.
       </t>
-      
+
       <t hangText="NS Subnet:">
       An NS subnet is partially virtual network established within a single domain.
       </t>
-      
-      
+
+
       <t hangText="End-to-End Network Slice (E2E-NS):">
-      An E2E-NS is a virtual network connecting between end points. E2E slices are composed of a single NS 
+      An E2E-NS is a virtual network connecting between end points. E2E slices are composed of a single NS
       subnet or multiple NS subnets.
       </t>
-      
+
       <t hangText="Network Slice as a Service (NSaaS):">
-      An NSaaS is a NS distribution model in which a third-party provider hosts NSs and makes them available 
+      An NSaaS is a NS distribution model in which a third-party provider hosts NSs and makes them available
       to customers.
       </t>
-      
+
       <t hangText="Network Slice Tenant (NS Tenant):">
       An NS tenant is a person or group that rents and occupies NSs from NS providers.
       </t>
-      
+
       <t hangText="Domain:">
       A domain is a group of a network and devices administrated as a unit with common rules and procedures.
       </t>
-      
+
       <t hangText="Administrative Domain:">
       An administrative domain is a group of networks and devices managed by an administrator.
       </t>
-      
+
       <t hangText="Resource:">
-      A resource is element used to create virtual networks. There are several types of resources, i.e., 
+      A resource is element used to create virtual networks. There are several types of resources, i.e.,
       connectivity, computing and storage.
       </t>
-      
+
       <t hangText="Network Function Virtualization (NFV):">
       NFV is the concept or technologies to provide dedicated network appliances as software.
       </t>
-      
+
       <t hangText="Software Defined Network (SDN):">
-      SDN is the concept or  technologies to separate network control plane from data plane, and control 
+      SDN is the concept or  technologies to separate network control plane from data plane, and control
       network devices dynamically and flexibly.
       </t>
-      
+
       <t hangText="Virtual Network:">
-      A virtual network is a network running a number of virtual network functions. 
+      A virtual network is a network running a number of virtual network functions.
       </t>
-      
-      <t hangText="Virtual Network Function (VNF):"> 
-      A virtual network function (VNF) is a network function whose functional 
-      software is decoupled from hardware. One or more virtual machines running different software and 
-      processes on top of industry-standard high-volume servers, switches and storage, or cloud computing 
-      infrastructure, and capable of implementing network functions traditionally implemented via custom 
+
+      <t hangText="Virtual Network Function (VNF):">
+      A virtual network function (VNF) is a network function whose functional
+      software is decoupled from hardware. One or more virtual machines running different software and
+      processes on top of industry-standard high-volume servers, switches and storage, or cloud computing
+      infrastructure, and capable of implementing network functions traditionally implemented via custom
       hardware appliances and middleboxes (e.g., router, NAT, firewall, load balancer, etc.)
       </t>
-      
+
       <t hangText="Slice Gateway Function (SLG):">
-      An SLG is a function or a group of functions to connect/disconnect NS subnets. The roles are described in 
+      An SLG is a function or a group of functions to connect/disconnect NS subnets. The roles are described in
       the following sections.
       </t>
-      
+
       <t hangText="Business Support System and Operation Support System (BSS/OSS):">
        BSS/OSS are systems to support service providing and operation of network devices.
       </t>
-      
-      
+
+
       <t hangText="Orchestrator:">
-      Orchestrator is an entity to operate network components automatically. There are several types of 
-      orchestrators including NFV Orchestrator (NFVO) or service orchestrator defined by ETSI NFV 
+      Orchestrator is an entity to operate network components automatically. There are several types of
+      orchestrators including NFV Orchestrator (NFVO) or service orchestrator defined by ETSI NFV
       and Open Source MANO (OSM) (<xref target="NFV-Architectural-Framework"/> and <xref target="OSM-White-Paper"/>).
       </t>
-      
+
       <t hangText="SLG Controller (SLG-Ctrl):">
-      An SLG-Ctrl is an entity that controls SLGs. An SLG-Ctrl is controlled by upper-level operation 
+      An SLG-Ctrl is an entity that controls SLGs. An SLG-Ctrl is controlled by upper-level operation
       systems such as OSS/BSS or orchestrator.
-      </t> 
+      </t>
       </list>
       </t>
     </section>
 
-    
+
     <section title="Motivations and Roles of SLG">
       <t>
-      One of the main roles of SLG is the enablement of interworkings between data plane with management and control 
+      One of the main roles of SLG is the enablement of interworkings between data plane with management and control
       elements for controlling and orchestrating end-to-end slices.
       </t>
-      
+
       <t>
-      Use cases of network slices are discussed in several Standard Developing Organizations (SDOs). Some examples 
+      Use cases of network slices are discussed in several Standard Developing Organizations (SDOs). Some examples
       are described in use cases document (<xref target="I-D.netslices-usecases"/>).
       </t>
-      
+
       <t>
-      In some proposed use cases, an NS is structured across multiple network domains. The capability of 
-      NS subnets might be different because the components are domain-specific. In particular, the differentiation 
+      In some proposed use cases, an NS is structured across multiple network domains. The capability of
+      NS subnets might be different because the components are domain-specific. In particular, the differentiation
       in capability between different administrative domains is large.
       </t>
-      
+
       <t>
-      For connecting some different NS subnets and providing a NS that guarantees the prescribed quality from 
-      end to end, SLGs are required to connect such NS subnets. SLGs enable to provide E2E-NSs 
-      independently of specifications of underlay networks by  hiding the differentiations and connecting between 
-      NS subnets. An overview of this concept is shown in <xref target="fig_E2E-NS"/>. SLGs glue NS subnets 
+      For connecting some different NS subnets and providing a NS that guarantees the prescribed quality from
+      end to end, SLGs are required to connect such NS subnets. SLGs enable to provide E2E-NSs
+      independently of specifications of underlay networks by  hiding the differentiations and connecting between
+      NS subnets. An overview of this concept is shown in <xref target="fig_E2E-NS"/>. SLGs glue NS subnets
       established on each domain and provide an E2E-NS.
       </t>
-      
+
 
 
 <figure anchor="fig_E2E-NS"
         title="E2E-NS composed of multiple NS subnets">
   <artwork>
-  
+
                                 E2E-NS
           ________________________A_________________________
          /                                                  \
-            _____________ ____________      _________________ 
+            _____________ ____________      _________________
            /            //           /     /                /
  end    +---+   NS   +---+   NS   +---+ +---+   NS   ,------.
  host==>|SLG| Subnet |SLG| Subnet |SLG+-+SLG| Subnet( Server )
@@ -331,40 +333,40 @@
               :              :                  :
               :              :                  :
           .--.           .--.               .--.
-         (    )-.       (    )-.           (    )-. 
+         (    )-.       (    )-.           (    )-.
        .' Access '    .' Core   '        .'  Data  '
        ( Network   )  ( Network   )      (  Center   )
         (        -'    (        -'        ( /Cloud -'
          '-(     )      '-(     )          '-(     )
             '---'          '---'              '---'
-        
+
       \______ ______/ \_____ _____/    \________ ________/
              V              V                   V
           Domain#1       Domain#2            Domain#3
-   
+
       \_____________ _____________/    \________ ________/
                     V                           V
-        Domain of Administrator#A     Domain of Administrator#B 
+        Domain of Administrator#A     Domain of Administrator#B
 
   </artwork>
 </figure>
-      
+
 
       <t>
-      Moreover, identification of user service traffic and their allocation/disallocation to the appropriate NS subnet are 
+      Moreover, identification of user service traffic and their allocation/disallocation to the appropriate NS subnet are
       required at the edges of E2E-NSs, as shown in <xref target="fig_NS-Selection"/>, and SLGs might take on these roles.
       </t>
 
 <figure anchor="fig_NS-Selection"
         title="NS subnet selection of SLG">
   <artwork>
-  
+
              +-----+    _______________
    end       |     |-->/_______________
    host ====>| SLG |      NS Subnet#1
              |@Edge|    _______________
              |     |-->/______________
-             |     |      NS Subnet#2  
+             |     |      NS Subnet#2
              |     | :        :
              +-----+
 
@@ -373,8 +375,8 @@
 
 
       <t>
-      Note that, this model has the assumption that transitions of data packets from one NS subnet to another 
-      are executed at only SLGs. Also, an SLG is not necessarily implemented as a single device or virtual 
+      Note that, this model has the assumption that transitions of data packets from one NS subnet to another
+      are executed at only SLGs. Also, an SLG is not necessarily implemented as a single device or virtual
       machine (VM).
       </t>
     </section>
@@ -383,24 +385,24 @@
 
     <section title="Architecture of Network Slicing System">
       <t>
-      NSs are composed of several (virtual) network functions and links, and the charactaristics of each NS 
-      are based on the assumed service. Also, some of NSs are deployed accross multiple administrative domains. 
-      For deploying the appropriate NSs based on each service requirements, a management system, which enables 
-      to control network resources totally within a domain, and interaction between such management systems are 
-      required. 
+      NSs are composed of several (virtual) network functions and links, and the charactaristics of each NS
+      are based on the assumed service. Also, some of NSs are deployed accross multiple administrative domains.
+      For deploying the appropriate NSs based on each service requirements, a management system, which enables
+      to control network resources totally within a domain, and interaction between such management systems are
+      required.
       </t>
-      
+
       <t>
-      An SLG is a network function, and SLGs are installed at edge of NS subnets. NSs are dynamically created, 
-      deleted, and moved depending on requests from network opertor orNS tenants. Therefore, some SLGs would be 
+      An SLG is a network function, and SLGs are installed at edge of NS subnets. NSs are dynamically created,
+      deleted, and moved depending on requests from network opertor orNS tenants. Therefore, some SLGs would be
       required to be VNF for flexible deployment.
       </t>
-      
+
       <t>
-      This section describes overview of NS management system architecture (<xref target="NS-MS"/>) and 
+      This section describes overview of NS management system architecture (<xref target="NS-MS"/>) and
       position of SLG in NFV (<xref target="SLG-NFV"/>).
       </t>
-      
+
       <section anchor="NS-MS" title="Network Slice Management System Architecture">
       <t>
       The architecture overview of NS management system is shown in  <xref target="fig_NS-Mng-Arch"/>.
@@ -409,7 +411,7 @@
 <figure anchor="fig_NS-Mng-Arch"
         title="Overview of NS Management Architecture">
   <artwork><![CDATA[
-  
+
   NS Tenant
     |
  . .|. . . . . . . . . . . . . . . . . . . . .
@@ -429,7 +431,7 @@
 . +-+--------------------+-----------+        .  . +-+--------+-+  .
 .   |                    |                    .  .   |        |    .
 . +-v----------------+ +-v----------------+   .  .       :         .
-. | Resource Orch.#1 | | Resource Orch.#2 |.. .   . . . . . . . . . 
+. | Resource Orch.#1 | | Resource Orch.#2 |.. .   . . . . . . . . .
 . +-+---------+------+ +-+---------+------+   .   Administrative
 .   |         |          |         |          .   Domain#2
 . +-v------++-v------+ +-v------++-v------+   .
@@ -443,7 +445,7 @@
 . |in      ||in      | |in      ||in      |   .
 . |Domain#1||Domain#1| |Domain#2||Domain#2|   .
 . +--------++--------+ +--------++--------+   .
- . . . . . . . . . . . . . . . . . . . . . . . 
+ . . . . . . . . . . . . . . . . . . . . . . .
   Administrative Domain#1
 
                  CSS-Mngr./CSS-M:Cross-Segment Slice Manager
@@ -452,161 +454,161 @@
 </figure>
 
       <t>
-      Orchestrators manage whole resources including network elements and server resources (i.e., routing, 
+      Orchestrators manage whole resources including network elements and server resources (i.e., routing,
       bandwidth, compute or storage).
-      In this figure, the resources including network elements and server resources are managed by resource orchestrators 
+      In this figure, the resources including network elements and server resources are managed by resource orchestrators
       installed in each domain, and the E2E-orchestrator and network service orchestrator handle resource orchestrators.
       </t>
-      
+
       <t>
-      NSs are requested from NS tenants via the portal system and the order of creations of an NS is given to 
-      the E2E orchestrator from the portal system via BSS/OSS. When an NS across multiple administrative domains 
-      are requested, the portal system that received the request forwards the order to create NS subnets to the other 
-      infrastructure providers' systems via Cross-Segment Slice Manager. The details of COMS architecture are described 
+      NSs are requested from NS tenants via the portal system and the order of creations of an NS is given to
+      the E2E orchestrator from the portal system via BSS/OSS. When an NS across multiple administrative domains
+      are requested, the portal system that received the request forwards the order to create NS subnets to the other
+      infrastructure providers' systems via Cross-Segment Slice Manager. The details of COMS architecture are described
       in the architecture document ([I-D.qiang-coms-architecture]).
       </t>
-      
+
       <t>
-      SLGs are also controlled via orchestrators. An SLG basically belongs to a network element, and it might also 
-      belong to server resource if it runs as a VNF. (The position of SLG deployed as a VNF is shown in 
+      SLGs are also controlled via orchestrators. An SLG basically belongs to a network element, and it might also
+      belong to server resource if it runs as a VNF. (The position of SLG deployed as a VNF is shown in
       <xref target="SLG-NFV"/>.)
       </t>
-      
+
       <t>
-      The information model used in this architecture is described in information model document 
+      The information model used in this architecture is described in information model document
       (<xref target="I-D.qiang-coms-netslicing-information-model"/>).
       </t>
       </section>
-    
+
       <section anchor="SLG-NFV"
     		title="Position of SLG on ETSI NFV MANO">
       <t>
-      Some SLGs and the controllers are deployed and run on NSs as VNFs. 
-      An arechitecture for managing lifecycle of VNFs is under standardization 
+      Some SLGs and the controllers are deployed and run on NSs as VNFs.
+      An arechitecture for managing lifecycle of VNFs is under standardization
       in ETS NFV MANO.
       </t>
-      
+
       <t>
-      The mapping of SLG as a VM into ETSI NFV MANO architecture is described in 
-      <xref target="fig_SLG-Position-MANO"/>. In some cases, SLGs are deployed 
-      with containor. VNFs are parts of NS compositions and 
-      NFV orchestrator would be controlled by upper control entities such as 
+      The mapping of SLG as a VM into ETSI NFV MANO architecture is described in
+      <xref target="fig_SLG-Position-MANO"/>. In some cases, SLGs are deployed
+      with containor. VNFs are parts of NS compositions and
+      NFV orchestrator would be controlled by upper control entities such as
       resource orchestrator.
       </t>
 
 <figure anchor="fig_SLG-Position-MANO"
 		title="Position of SLG as a VM on ETSI NFV MANO">
   <artwork><![CDATA[
-  
+
          OSS/BSS, Service-Orch, Resource-Orch
            |                |
            |                |
-         +-v-------+      +-v----------+ 
-         |SLG-Ctrl |<-----+ NFV Orch.  | 
-         +-+-------+      +-+----------+ 
-           |                |           
-         ,-v-------.        |           
-         |  SLG    |        |           
-         :=========:      +-v----------+ 
-         |VM(GstOS)|<-----+VNF Manager | 
-         `---------'      +-+----------+ 
-         +---------+        |           
-         | HostOS/ |      +-v----------+ 
-         | Server  |<-----| VIM        | 
-         +---------+      +------------+ 
+         +-v-------+      +-v----------+
+         |SLG-Ctrl |<-----+ NFV Orch.  |
+         +-+-------+      +-+----------+
+           |                |
+         ,-v-------.        |
+         |  SLG    |        |
+         :=========:      +-v----------+
+         |VM(GstOS)|<-----+VNF Manager |
+         `---------'      +-+----------+
+         +---------+        |
+         | HostOS/ |      +-v----------+
+         | Server  |<-----| VIM        |
+         +---------+      +------------+
   ]]></artwork>
 </figure>
-    
-    </section>
-    
-    
+
     </section>
 
 
+    </section>
 
-    <section anchor="SLG-Req" 
+
+
+    <section anchor="SLG-Req"
     title="Requirements for SLG">
       <t>
-      An SLG is basically a component in the data plane and has the roles of data packet processing. Moreover, it 
-      is required to have functions for control/management processes such as connecting to underlay 
+      An SLG is basically a component in the data plane and has the roles of data packet processing. Moreover, it
+      is required to have functions for control/management processes such as connecting to underlay
       networks or managing NSs.
       </t>
-      
+
       <t>
-      Furthermore, an SLG might be required to support handling services provided on NSs in addition to 
+      Furthermore, an SLG might be required to support handling services provided on NSs in addition to
       controlling of NS because an SLG is an edge node on an E2E-NS.
       </t>
-      
+
       <t>
       In this section, we describe the requirements for an SLG in terms of the following aspects and their interworkings.
       </t>
-      
+
       <t>
       <list style="hanging">
       <t hangText="1.">
       Data plane for NSs as infrastructure
       </t>
-      
+
       <t hangText="2.">
       Control/management plane for NSs as infrastructure
       </t>
-      
+
       <t hangText="3.">
       Data plane for services on NSs
       </t>
-      
+
       <t hangText="4.">
       Control/management plane for services on NSs
       </t>
       </list>
       </t>
-      
+
       <section title="Management of NS as Infrastructure">
         <section anchor="DP-Req-Infra"
                  title="Data Plane Aspect">
           <section title="Identification/Classification">
           <t>
-          SLGs at the edge of E2E-NSs MUST have the capability to identify and classify data packets, and assign 
+          SLGs at the edge of E2E-NSs MUST have the capability to identify and classify data packets, and assign
           them to the appropriate E2E-NS. This requirement varies depending on the location.
           </t>
 
           <t>
           <list style="hanging">
           <t hangText="Fixed Access:">
-          An SLG MUST identify and classify data packet with access point, including CPE or WiFi-AP, or 
-          subscriber ID such as VLAN-ID. Moreover, in some services, an SLG should identify and classify data 
+          An SLG MUST identify and classify data packet with access point, including CPE or WiFi-AP, or
+          subscriber ID such as VLAN-ID. Moreover, in some services, an SLG should identify and classify data
           packets based on user device or application used in the communication.
           </t>
-          
+
           <t hangText="Mobile Access:">
-          An SLG MUST identify and classify data packet with subscriber-ID such as IMSI, radio-wave bandwidth, 
-          or identifier of tunnels. Moreover, in some services, an SLG should identify and classify data packets 
+          An SLG MUST identify and classify data packet with subscriber-ID such as IMSI, radio-wave bandwidth,
+          or identifier of tunnels. Moreover, in some services, an SLG should identify and classify data packets
           based on application used in the communication or location of the user equipment (UE).
           </t>
-          
+
           <t hangText="Between NS subnets:">
-          An SLG MUST identify and classify data packet based on the tunnel-ID or virtual routing and forwarding (VRF) 
-          that received the packets. If specific slice identifier such as a value mapped in the metadata field of 
+          An SLG MUST identify and classify data packet based on the tunnel-ID or virtual routing and forwarding (VRF)
+          that received the packets. If specific slice identifier such as a value mapped in the metadata field of
           the IP header is used; an SLG should identify and classify data packets with the ID.
           </t>
           </list>
           </t>
           </section>
-          
+
           <section title="Transporting/Forwarding">
           <t>
-          SLGs MUST provide functions for transport data packets depending on the specifications of the 
+          SLGs MUST provide functions for transport data packets depending on the specifications of the
           underlay networks.
           </t>
-          
+
           <t>
           <list style="hanging">
           <t hangText="Encapsulation/Decapsulation/Tagging:">
-          In network slicing, duplication of IP addresses of user packets between NSs MUST be accepted, 
-          thus, using techniques that enable separation of a network logically is preferred. In short, 
-          some tunnel protocols or tagging approaches should be used as transport of NSs. For this reason, 
-          SLG MUST support encapsulation or tagging of data packets based on the specification of the underlay 
-          network. Also, SLG MUST support the packets' decapsulation or untagging. Examples of tunnel protocols 
+          In network slicing, duplication of IP addresses of user packets between NSs MUST be accepted,
+          thus, using techniques that enable separation of a network logically is preferred. In short,
+          some tunnel protocols or tagging approaches should be used as transport of NSs. For this reason,
+          SLG MUST support encapsulation or tagging of data packets based on the specification of the underlay
+          network. Also, SLG MUST support the packets' decapsulation or untagging. Examples of tunnel protocols
           and tags that can be used for creating NSs on L2/L3 segments are described below.
           </t>
             <t>
@@ -614,39 +616,39 @@
             <t hangText="L2 Segment:">
             VLAN, MPLS, Segment Routing MPLS (SR-MPLS), PPPoE, etc.
             </t>
-            
+
             <t hangText="L3 Segment:">
             GRE, L2TP, GTP-U, VxLAN, IPv6 Segment Routing (SRv6), etc.
             </t>
             </list>
             </t>
-            
+
             <t>
-            VxLAN, SR-MPLS, and SRv6 are described in their specification documents (<xref target="RFC7348"/>, 
-            <xref target="I-D.ietf-spring-segment-routing-mpls"/>, 
+            VxLAN, SR-MPLS, and SRv6 are described in their specification documents (<xref target="RFC7348"/>,
+            <xref target="I-D.ietf-spring-segment-routing-mpls"/>,
             and <xref target="I-D.ietf-6man-segment-routing-header"/>).
             </t>
-            
+
           <t hangText="Translation of Encapsulation/Tagging Form:">
           SLG MUST support to translate tunnel header or tag of received packets to the appropriate tunnel header
-          or tag when it forwards data packets to the next NS subnet that has different transport capability. 
+          or tag when it forwards data packets to the next NS subnet that has different transport capability.
           </t>
-          
+
           <t hangText="Distribution of Traffic:">
-          Some NSs have multiple route between the same end points within the same NS subnet because of traffic 
-          engineering, switching to a redundant path, or other reasons, and SLG MAY forward data packets with the 
-          appropriate route based on some trigger information. An example of the overview of this requirement is 
-          shown in <xref target="fig_NS-Distribution"/>. In this figure, there are two routes, main and 
-          sub, between SLGs, and an SLG switches forwarding route depending on the network situation such 
+          Some NSs have multiple route between the same end points within the same NS subnet because of traffic
+          engineering, switching to a redundant path, or other reasons, and SLG MAY forward data packets with the
+          appropriate route based on some trigger information. An example of the overview of this requirement is
+          shown in <xref target="fig_NS-Distribution"/>. In this figure, there are two routes, main and
+          sub, between SLGs, and an SLG switches forwarding route depending on the network situation such
           as congestion occurrence on the current route.
           </t>
           </list>
           </t>
-          
+
 <figure anchor="fig_NS-Distribution"
         title="An example of traffic distribution by SLG">
   <artwork><![CDATA[
-  
+
 
            ____________________________
           /        . . . . .          /
@@ -657,212 +659,212 @@
     +-----+   *           *     +-----+
      /         * * * * *         /
     /___________________________/
-      NS Subnet                  
+      NS Subnet
                            *** : Main-route
                            ... : Sub-route
-                           
+
   ]]></artwork>
 </figure>
 
 
         </section>
-          
+
         <section title="Isolation between NSs">
         <t>
-        In NSaaS, isolation control is required for avoiding an NS being affect by other NSs. 
-        Traffic engineering or QoS control is ones of the most fundamental approaches to prevent 
+        In NSaaS, isolation control is required for avoiding an NS being affect by other NSs.
+        Traffic engineering or QoS control is ones of the most fundamental approaches to prevent
         disturbances between NSs.
         </t>
-        
+
         <t>
           <list style="hanging">
           <t hangText="Traffic Shaping/Policing:">
-          An SLG MUST execute traffic shaping and policing at its egress and ingress ports to avoid an NS using 
+          An SLG MUST execute traffic shaping and policing at its egress and ingress ports to avoid an NS using
           excessive traffic bandwidth.
           </t>
-        
+
           <t hangText="Quality of service (QoS) Control:">
-          If there is an order of priority between NSs on the same underlay infrastructure, an SLG should 
-          remark the appropriate QoS parameter of the outer-most header of each packet following the 
-          preconfigured setting and provide packet scheduling based on the QoS parameter for providing 
-          priority control. The field that SLG refers may vary depending on the specification of the underlay 
-          network. For example, COS value is remarked in L2 segments; on the other hand, 
-          DSCP value is remarked in L3 segments. 
+          If there is an order of priority between NSs on the same underlay infrastructure, an SLG should
+          remark the appropriate QoS parameter of the outer-most header of each packet following the
+          preconfigured setting and provide packet scheduling based on the QoS parameter for providing
+          priority control. The field that SLG refers may vary depending on the specification of the underlay
+          network. For example, COS value is remarked in L2 segments; on the other hand,
+          DSCP value is remarked in L3 segments.
           </t>
           </list>
         </t>
         </section>
-      
+
         <section title="Service Chaining as Infrastructural Mechanism(*Optional)">
         <t>
         If an SLG is composed of a combination of several components, a service chaining mechanism is required
         to make them work together and achieve SLG functionality.
         </t>
-        
+
         <t>
-        Moreover, some NSs may traverse NFVs such as firewalls or cache servers for providing value-added services 
-        to their users. In such cases, SLG might be required to support service chaining mechanisms, such 
+        Moreover, some NSs may traverse NFVs such as firewalls or cache servers for providing value-added services
+        to their users. In such cases, SLG might be required to support service chaining mechanisms, such
         as handling of network service header (NSH) defined in <xref target="RFC8300"/>. If an NS includes the
-        service chaining architecture defined in <xref target="RFC7665"/>, 
-        some SLG would be required to support following functions; classifier(CF), service function forwarder 
-        (SFF), and inter boundary node(IBN). (Details of CF, SFF and IBN are described in SFC documents; 
-        <xref target="RFC7665"/>, <xref target="I-D.ietf-sfc-hierarchical"/>.) 
+        service chaining architecture defined in <xref target="RFC7665"/>,
+        some SLG would be required to support following functions; classifier(CF), service function forwarder
+        (SFF), and inter boundary node(IBN). (Details of CF, SFF and IBN are described in SFC documents;
+        <xref target="RFC7665"/>, <xref target="I-D.ietf-sfc-hierarchical"/>.)
         </t>
         </section>
       </section>
-      
+
       <section title="Control/Management Planes Aspects">
         <section title="Interfaces to Controllers or Operation Systems">
         <t>
-        SLG MUST have interface to its controller or operation systems for set parameters related to the 
-        data plane functions described in <xref target="DP-Req-Infra"/>. In addition, an SLG at the edges of 
+        SLG MUST have interface to its controller or operation systems for set parameters related to the
+        data plane functions described in <xref target="DP-Req-Infra"/>. In addition, an SLG at the edges of
         E2E-NSs MUST have interfaces to authentication servers.
         </t>
         </section>
-          
+
         <section title="Address Resolution/Routing">
         <t>
-        An SLG MUST support address resolution or routing mechanisms to connect to underlay network elements 
+        An SLG MUST support address resolution or routing mechanisms to connect to underlay network elements
         including routers or L2 switches.
         </t>
         </section>
-        
+
         <section title="Authentication Authorization Accounting (AAA)">
         <t>
-        For preventing entry of irregular traffic to NSs, an SLG at the edge of E2E-NS MUST support AAA mechanism 
-        for incoming traffic. Also, when an SLG connects to another SLG in other administrative 
-        domain, SLGs should have a mechanism to confirm that the connection is established with the regular processes. 
-        For example, an SLG is required to support authentication of the opponent SLG with key information indicated 
+        For preventing entry of irregular traffic to NSs, an SLG at the edge of E2E-NS MUST support AAA mechanism
+        for incoming traffic. Also, when an SLG connects to another SLG in other administrative
+        domain, SLGs should have a mechanism to confirm that the connection is established with the regular processes.
+        For example, an SLG is required to support authentication of the opponent SLG with key information indicated
         from higher-level operation systems.
         </t>
-        
+
         <t>
         </t>
         </section>
-        
+
         <section title="Operation Administration and Maintenance(OAM)">
         <t>
-        In management of NSs, OAM or monitoring mechanisms for both underlay and overlay networks is 
-        required for SLGs. For an underlay network, an SLG MUST have OAM functions to confirm connectivity to 
-        interconnect equipment. For an overlay network, an SLG MUST have OAM functions to confirm connectivity to 
-        the some node on the same NS, and measure the traffic amount of flowing packets on each NS. 
+        In management of NSs, OAM or monitoring mechanisms for both underlay and overlay networks is
+        required for SLGs. For an underlay network, an SLG MUST have OAM functions to confirm connectivity to
+        interconnect equipment. For an overlay network, an SLG MUST have OAM functions to confirm connectivity to
+        the some node on the same NS, and measure the traffic amount of flowing packets on each NS.
         </t>
         </section>
       </section>
     </section>
-      
+
     <section title="Management of Services on NS (*Optional)">
       <section title="Data Plane Aspect">
         <section title="Identification/Classification">
         <t>
-        In NSaaS, some NS tenants may need delivery of an individual service to each user, device, or 
-        application on the same NS. For such service deliveries, an SLG might be required to identify 
+        In NSaaS, some NS tenants may need delivery of an individual service to each user, device, or
+        application on the same NS. For such service deliveries, an SLG might be required to identify
         and classify user traffic based on some information such as subscriber ID or payload of data packets.
         Also, an SLG should be controllable from the NS tenant.
         </t>
         </section>
-        
+
         <section title="QoS Control">
         <t>
-        An NS accommodates several communication devices and SLGs might be required to have fair queueing 
-        mechanisms for maintaining service quality of each user. Also, different types of service traffic 
-        that have different priorities might coexist on an NS. For example, some NS providers might provide 
-        telephone and internet access services to their users with an NS. In such cases, SLG might be 
+        An NS accommodates several communication devices and SLGs might be required to have fair queueing
+        mechanisms for maintaining service quality of each user. Also, different types of service traffic
+        that have different priorities might coexist on an NS. For example, some NS providers might provide
+        telephone and internet access services to their users with an NS. In such cases, SLG might be
         required to provide QoS control mechanisms for enforcing priority control based on service priorities.
         </t>
-        
+
         <t>
-        These QoS controls are executed depending on the information of inner packets and are independent 
-        of isolation mechanisms as infrastructure. An SLG might be required to have a hierarchical QoS control 
-        mechanism in case that both QoS controls for services over NSs and isolation between NSs are 
+        These QoS controls are executed depending on the information of inner packets and are independent
+        of isolation mechanisms as infrastructure. An SLG might be required to have a hierarchical QoS control
+        mechanism in case that both QoS controls for services over NSs and isolation between NSs are
         required.
         </t>
         </section>
-          
+
         <section title=" Steering/Service Chaining(Cooperation with VNFs)">
         <t>
-        SLG might be required to support steering or service chaining function for conveying data packets 
-        to the appropriate network functions deployed on an NS based on the classification result and 
+        SLG might be required to support steering or service chaining function for conveying data packets
+        to the appropriate network functions deployed on an NS based on the classification result and
         user's contract information.
         </t>
         </section>
       </section>
-      
+
       <section title="Control/Management Planes Aspects">
         <section title="Interfaces to Service Management Systems">
         <t>
-        An SLG might have interfaces to controllers for managing user policies on each NS. Some 
-        controllers might be deployed on the same NS. If some controllers are located at external networks, 
+        An SLG might have interfaces to controllers for managing user policies on each NS. Some
+        controllers might be deployed on the same NS. If some controllers are located at external networks,
         they might require SLGs to have APIs.
         </t>
         </section>
-        
+
         <section title="Collection of Telemetry information">
         <t>
-        In an NSaaS, collection of telemetry information of each NS might be required for understanding 
-        traffic usage. Thus, an SLG might be required to support to collect and report telemetry information 
-        of connected NSs. 
+        In an NSaaS, collection of telemetry information of each NS might be required for understanding
+        traffic usage. Thus, an SLG might be required to support to collect and report telemetry information
+        of connected NSs.
         </t>
         </section>
       </section>
     </section>
-  </section>      
+  </section>
 
-          
+
   <section title="Deployment of SLG">
   <t>
   This section describes considerations related with deployment of SLGs.
   </t>
-    
+
     <section title="Examples of Components Required to Maintain SLG Functions">
     <t>
-    For providing E2E-NSs on existing network infrastructures, some components located at boundaries of 
-    domains are required to have the same set of functionality as an SLG. Examples of such components 
+    For providing E2E-NSs on existing network infrastructures, some components located at boundaries of
+    domains are required to have the same set of functionality as an SLG. Examples of such components
     in each domain type are described below.
     </t>
-    
+
     <t>
       <list style="hanging">
       <t hangText="Fixed Network:">
       CPE/HGW, Service Edge, Gateway Router, etc.
       </t>
-      
+
       <t hangText="Mobile Network:">
       User Equipment, Radio-AP, eNodeB, S/P-GW (<xref target="LTE-Specs"/>), etc.
       </t>
-      
+
       <t hangText="Data Center:">
       Gateway Router, L2 switch, ToR switch, Server, etc.
       </t>
       </list>
     </t>
     </section>
-  
+
     <section title="SLG Types Depending on Locations on NS">
     <t>
     There are mainly three types of SLG for creating E2E-NS across multiple administrative domains.
     The requirements of each SLG type are listed in <xref target="app1"/>.
     </t>
-    
+
       <section title="Edge SLG(E-SLG)">
       <t>
-      This is located at an edge of an E2E-NS, and supports identification, classification and authentication 
-      of user traffic in addition to fundamental SLG functions, such as transport and isolation. 
+      This is located at an edge of an E2E-NS, and supports identification, classification and authentication
+      of user traffic in addition to fundamental SLG functions, such as transport and isolation.
       Also, it might be required to have capabilities for services delivered on an NS.
       </t>
       </section>
-      
+
       <section title="Inter-Subnet SLG(IS-SLG)">
       <t>
-      This is located between NS subnets within a single administrative domain and has 
-      only fundamental functions. It is not necessarily required if a common transport mechanism in 
+      This is located between NS subnets within a single administrative domain and has
+      only fundamental functions. It is not necessarily required if a common transport mechanism in
       all domains is used.
       </t>
       </section>
-      
+
       <section title="Inter-Domain SLG(ID-SLG)">
       <t>
-      This is located between NS subnets established on different  domains. It supports 
+      This is located between NS subnets established on different  domains. It supports
       authentication for connecting to the opponent SLG in addition to fundamental functions.
       </t>
       </section>
@@ -870,14 +872,14 @@
 
     <section title="Horizontal Connection">
     <t>
-    The connection form of an SLG varies depending on which type it is. Examples of horizontal connection forms 
+    The connection form of an SLG varies depending on which type it is. Examples of horizontal connection forms
     of each SLG type are described below.
     </t>
     <t>
       <list style="hanging">
       <t hangText="E-SLG:">
-       An E-SLG accommodates several hosts and NS subnets. This has a forwarding table of end hosts and insert their 
-       packets to the appropriate NS subnet. An overview of this connection is shown in 
+       An E-SLG accommodates several hosts and NS subnets. This has a forwarding table of end hosts and insert their
+       packets to the appropriate NS subnet. An overview of this connection is shown in
        <xref target="fig_E-SLG-Connection"/>.
        </t>
        </list>
@@ -885,7 +887,7 @@
 <figure anchor="fig_E-SLG-Connection"
         title="Overview of horizontal connection of E-SLG">
   <artwork><![CDATA[
-  
+
 *Virtual Layer*
 
               +-----+
@@ -897,7 +899,7 @@
               |     |     NS Subnet#2
    :     :    |     | :        :
               +-----+
-              
+
 ////////////////////////////////////////
 *Physical Layer*
 
@@ -906,18 +908,18 @@
   [UE#2] -----[Edge]    Domain#1
   [UE#3] -----/  \
    :       :      `-------------------
-                           
+
 Edge: Edge Node
 
   ]]></artwork>
 </figure>
-        
+
       <t>
         <list style="hanging">
         <t hangText="IS-SLG:">
-        An IS-SLG has the role of mediator between NS subnets and passes packets received from an NS subnet to the 
-        next one. If transport methods used in each domain are different, the IS-SLG translate packet form 
-        to the appropriate one. An overview of this connection is shown in 
+        An IS-SLG has the role of mediator between NS subnets and passes packets received from an NS subnet to the
+        next one. If transport methods used in each domain are different, the IS-SLG translate packet form
+        to the appropriate one. An overview of this connection is shown in
         <xref target="fig_IS-SLG-Connection"/>.
         </t>
         </list>
@@ -928,8 +930,8 @@ Edge: Edge Node
   <artwork><![CDATA[
 
 *Virtual Layer*
- 
-                +------+    
+
+                +------+
     _________   |      |     ___________
    _________/-->|IS-SLG|--> /__________
   NS Subnet#1   |      |    NS Subnet#2
@@ -948,11 +950,11 @@ GW: Gateway Node
 
   ]]></artwork>
 </figure>
-    
+
       <t>
         <list style="hanging">
         <t hangText="ID-SLG:">
-        An ID-SLG passes data packets to another ID-SLG located on a different administrative domain. 
+        An ID-SLG passes data packets to another ID-SLG located on a different administrative domain.
         Some tunnel established between them in advance may be used for the passing of packets.
         An overview of this connection is shown in <xref target="fig_ID-SLG-Connection"/>.
         </t>
@@ -985,25 +987,25 @@ GW: Gateway Node
 </figure>
 
       </section>
-         
+
       <section title="Vertical Connection">
       <t>
-      There are two patterns of vertical connection of SLGs in the middle of E2E-NSs. The first pattern is 
-      that the SLGs accommodate only a set of NS subnets, which are composition of the same E2E-NS. In this 
-      pattern, such SLGs are not required to support NS subnet selection, however, establishment of a new 
-      SLG is required when a new E2E-NS is created. This might causes extra overheads because 
+      There are two patterns of vertical connection of SLGs in the middle of E2E-NSs. The first pattern is
+      that the SLGs accommodate only a set of NS subnets, which are composition of the same E2E-NS. In this
+      pattern, such SLGs are not required to support NS subnet selection, however, establishment of a new
+      SLG is required when a new E2E-NS is created. This might causes extra overheads because
       of deploying many SLGs.
       </t>
 
       <t>
-      The other pattern is that such SLGs are acceptable to accommodate multiple NS subnets from each domain. 
-      In this pattern, SLGs are support NS subnet selection. On the other hand, this pattern can restrain the number 
-      of SLGs. Also, it is easy to provide transit of data packets from an NS subnet 
+      The other pattern is that such SLGs are acceptable to accommodate multiple NS subnets from each domain.
+      In this pattern, SLGs are support NS subnet selection. On the other hand, this pattern can restrain the number
+      of SLGs. Also, it is easy to provide transit of data packets from an NS subnet
       to other subnet on the same domain.
       </t>
-       
+
       <t>
-      The overviews of these patterns are shown in <xref target="fig_Vertical-Connection1"/> and 
+      The overviews of these patterns are shown in <xref target="fig_Vertical-Connection1"/> and
       <xref target="fig_Vertical-Connection2"/>.
       </t>
 
@@ -1011,7 +1013,7 @@ GW: Gateway Node
         title="Overview of vertical connection of SLG: Separated Pattern">
   <artwork><![CDATA[
 
-                +-----+    
+                +-----+
     _________   |     |    ___________
    _________/-->|SLG#1|-->/__________
   NS Subnet#1   |     |    NS Subnet#2
@@ -1020,17 +1022,17 @@ GW: Gateway Node
     _________   |     |    ___________
    _________/-->|SLG#2|-->/__________
   NS Subnet#3   |     |    NS Subnet#4
-                +-----+   
+                +-----+
        :           :             :
 
   ]]></artwork>
 </figure>
-    
+
 <figure anchor="fig_Vertical-Connection2"
         title="Overview of vertical connection of SLG: Shared Pattern">
   <artwork><![CDATA[
 
-                +-----+    
+                +-----+
     _________   |     |    ___________
    _________/-->|     |-->/__________
   NS Subnet#1   |SLG#1|    NS Subnet#2
@@ -1043,79 +1045,79 @@ GW: Gateway Node
 
   ]]></artwork>
 </figure>
-    
+
       </section>
-      
+
       <section title="Software vs. Hardware">
       <t>
-      An SLG can be created as either a software or hardware function. NSs are virtual networks created 
-      depending on requests from external NS tenants, and thus software would be more compatible with 
-      usage for NSs in terms of flexibility or manageability. Moreover, it enables to increase or decrease for 
-      each function if SLG is composed of combination of several components. However, it is difficult to provide high 
-      performance or sufficient throughput for carrier-grade networks with software function. 
-      In addition, it would be difficult to implement sufficient QoS control mechanisms with general 
+      An SLG can be created as either a software or hardware function. NSs are virtual networks created
+      depending on requests from external NS tenants, and thus software would be more compatible with
+      usage for NSs in terms of flexibility or manageability. Moreover, it enables to increase or decrease for
+      each function if SLG is composed of combination of several components. However, it is difficult to provide high
+      performance or sufficient throughput for carrier-grade networks with software function.
+      In addition, it would be difficult to implement sufficient QoS control mechanisms with general
       servers, because they requires special hardware structures.
       </t>
 
       <t>
-      On the other hand, hardware appliances are able to provide high throughput compared with software. 
+      On the other hand, hardware appliances are able to provide high throughput compared with software.
       However, they are inflexible in terms of provisioning.
       </t>
 
       <t>
-      From the above considerations, operators should prepare SLG in appropriate ways depending on their 
+      From the above considerations, operators should prepare SLG in appropriate ways depending on their
       usages or locations.
       </t>
       </section>
     </section>
-    
-    
+
+
     <section anchor="SLG-Interconnection"
     title="Interconnection between NS subnets">
     <t>
-    SLG provides interconnectivity between NS subnets. The concept and fundamental framework including 
-    the related NS information model are described in subnets interconnection document 
-    (<xref target="I-D.defoy-coms-subnet-interconnection"/>). 
+    SLG provides interconnectivity between NS subnets. The concept and fundamental framework including
+    the related NS information model are described in subnets interconnection document
+    (<xref target="I-D.defoy-coms-subnet-interconnection"/>).
     </t>
-    
+
     <t>
-    This section is focused on interconnection between NS subnets established on different administrative 
+    This section is focused on interconnection between NS subnets established on different administrative
     domains, and describes considerations related to this condition.
     </t>
-    
+
       <section title="Pre-arrangement of transport protocols">
       <t>
-      For interconnection between different administrative NS subnets, pre-arrangement of the transport protocol, 
-      which is used to connect between SLGs is required. Orchestration systems indicate the protocol and 
+      For interconnection between different administrative NS subnets, pre-arrangement of the transport protocol,
+      which is used to connect between SLGs is required. Orchestration systems indicate the protocol and
       configuration to each SLG.
       </t>
       </section>
-      
+
       <section title="Quality Assurance between SLGs">
       <t>
-      In addition to establishing connection, quality control of communication is important. 
-      SLGs of egress side should execute traffic shaping to prevent some NSs from excessively occupying the 
-      link between SLGs. Moreover, some SLGs are connected to several other SLGs that are deployed on the different 
-      locations. Therefore SLGs of the ingress side should execute traffic policing to avoid excessive inflow of 
+      In addition to establishing connection, quality control of communication is important.
+      SLGs of egress side should execute traffic shaping to prevent some NSs from excessively occupying the
+      link between SLGs. Moreover, some SLGs are connected to several other SLGs that are deployed on the different
+      locations. Therefore SLGs of the ingress side should execute traffic policing to avoid excessive inflow of
       traffic into some NSs. The parameters for these controls are pre-configured by orchestration systems.
       </t>
-      
+
       <t>
-      The above approaches are ones of the simplest ways to provide quality assurance of inter-administrative 
+      The above approaches are ones of the simplest ways to provide quality assurance of inter-administrative
       subnets. If there is stricter isolation request, more considerations would be required.
       </t>
       </section>
-      
+
       <section title="Secure Interconnection">
       <t>
-      For connecting networks of different administrators, secure interconnection schemes are required. 
-      Especially, in an NSaaS, networks might be connected to several networks, and schemes for ensuring 
+      For connecting networks of different administrators, secure interconnection schemes are required.
+      Especially, in an NSaaS, networks might be connected to several networks, and schemes for ensuring
       secure connectivity would be more important.
       </t>
-      
+
       <t>
-      SLGs confirm whether the opponent SLG is regular when it requests to connect, and reject the request 
-      if the SLG is not regular. In some cases, SLGs might be confirm whether the inner packets received 
+      SLGs confirm whether the opponent SLG is regular when it requests to connect, and reject the request
+      if the SLG is not regular. In some cases, SLGs might be confirm whether the inner packets received
       from the other SLGs are sent from regular users.
       </t>
       </section>
@@ -1123,25 +1125,25 @@ GW: Gateway Node
 
     <section title="Security Considerations">
     <t>
-    Requirements and considerations for SLG related to security are described in <xref target="SLG-Req"/> 
+    Requirements and considerations for SLG related to security are described in <xref target="SLG-Req"/>
     and <xref target="SLG-Interconnection"/>.
     </t>
     </section>
-    
+
     <section title="IANA Considerations">
     <t>
     This memo includes no request to IANA.
     </t>
     </section>
-    
+
     <section title="Acknowledgement">
     <t>
     The authors would like to thank Li Qiang for her kind review and valuable feedback.
     </t>
     </section>
-    
-    
-    
+
+
+
   </middle>
 
   <!-- ***** BACK MATTER ***** -->
@@ -1150,13 +1152,13 @@ GW: Gateway Node
     <references title="Informative References">
 <!--
       <?rfc include="reference.RFC.7665"?>
-      
+
       <?rfc include="reference.RFC.8300"?>>
-      
+
       <?i-d include="reference.I-D.netslices-usecases"?>
-      
+
       <?i-d include="reference.I-D.defoy-coms-subnet-interconnection"?>
-      
+
       <?i-d include="reference.I-D.qiang-coms-netslicing-information-model"?>>
 -->
     &RFC7348;
@@ -1169,8 +1171,8 @@ GW: Gateway Node
     &I-D.draft-ietf-6man-segment-routing-header;
     &I-D.draft-ietf-sfc-hierarchical;
     &I-D.draft-defoy-coms-subnet-interconnection;
-    
-      
+
+
       <reference anchor='NFV-Architectural-Framework'
        target='http://www.etsi.org/deliver/etsi_gs/NFV/001_099/002/01.02.01_60/gs_NFV002v010201p.pdf'>
         <front>
@@ -1183,7 +1185,7 @@ GW: Gateway Node
         <date month="December" year="2014"/>
         </front>
       </reference>
-      
+
       <reference anchor='OSM-White-Paper'
        target='https://osm.etsi.org/images/OSM-Whitepaper-TechContent-ReleaseONE-FINAL.pdf'>
         <front>
@@ -1194,7 +1196,7 @@ GW: Gateway Node
         <date month="October" year="2016"/>
         </front>
       </reference>
-      
+
       <reference anchor='LTE-Specs'
        target='http://www.qtc.jp/3GPP/Specs/36300-830.pdf'>
         <front>
@@ -1216,10 +1218,10 @@ GW: Gateway Node
     <section anchor="app1"
     		title="Requirements for each SLG Type">
       <t>
-      The requirements for each SLG type are listed in 
+      The requirements for each SLG type are listed in
       <xref target="Req-List"/>.
       </t>
-      
+
 <figure anchor="Req-List"
 title="List of Requirements for each SLG">
   <artwork><![CDATA[
@@ -1267,13 +1269,13 @@ title="List of Requirements for each SLG">
 |Telemetory     ||  O    |  O    |  O    |Section 5.2.2.2.|
 +---------------++-------+-------+-------+----------------+
                 M: Mandatry, O: Optional, - : Not Required
-                
+
   ]]></artwork>
 </figure>
-     
-    </section>
-    
 
-  
+    </section>
+
+
+
   </back>
 </rfc>
