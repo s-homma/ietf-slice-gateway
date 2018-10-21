@@ -61,14 +61,14 @@
 <?rfc subcompact="no" ?> 
 <!-- keep one blank line between list items --> 
 <!-- end of list of popular I-D processing instructions --> 
-<rfc category="info" docName="draft-homma-nfvrg-slice-gateway-00">
+<rfc category="info" docName="draft-homma-nmrg-slice-gateway-00">
   <!-- ***** FRONT MATTER ***** --> 
 
 
 
 
   <front>
-    <title abbrev="draft-homma-nfvrg-slice-gateway">
+    <title abbrev="draft-homma-nmrg-slice-gateway">
     Gateway Function for Network Slicing
     </title>
 
@@ -117,17 +117,17 @@
       </address>
     </author>
 
-    <date day="2" month="July" year="2018"/>
+    <date day="22" month="October" year="2018"/>
 
-    <area>Operation Area</area>
+    <area>nmrg</area>
 
     <workgroup>none</workgroup>
     
     <keyword>Internet-Draft</keyword>
 
     <abstract>
-      <t>This document describes the roles and requirements for a slice gateway that is a data plane function 
-      or function group for connecting/disconnecting and compose/decompose network slice subnets and providing 
+      <t>This document describes the roles and requirements for a slice gateway that is a function 
+      or function group for handling data plane traffic, such as connecting/disconnecting and compose/decompose network slice subnets and providing 
       network slices from end to end.  The interworkings between management and control 
       elements at the management and control planes with the gateway function for controlling and 
       orchestrating end-to-end network slices are also presented in this document.
@@ -140,7 +140,12 @@
       <t>
       Network slicing is an approach to create separate virtual networks in support of service depending on several 
       requirements on the same physical resources, and it enables networks to adapt to requirements, which is 
-      diverse more, inexpensively and flexibly. It's also expected to enhance usability of
+      diverse more, inexpensively and flexibly.  The overview is introduced in <xref target="Slicing_Tutrial"/> and 
+      <xref target="NECOS"/>.
+      </t>
+
+      <t>
+      It's also expected to enhance usability of
       infrastructural networks for tenants and create new business opportunities. For example, by using 
       network slices lent from infrastructure operators, other industrial companies can provide communication 
       services including ensurance of network transport without having physical infrastructure.
@@ -178,16 +183,17 @@
       </t>
 
       <t>
-      Network slice subnets are built based on specification of the underlay network, and thus the used technologies
+      Network slice subnets are built based on specifications of the underlay network, and thus the used technologies
       might vary. Therefore, a gateway function, which enables to connect subnets while adapting the differentiations 
       and forward data packets to/from the appropriate next subnet, is required.
       </t>
       
       
       <t>
-      In this document, the gateway function is called slice gateway or SLG, and the role and requirements 
-      are described.  Defining a new data plane technology is  not a goal of this draft. 
-      This draft aims to specify management-related requirements for an SLG, which may be 
+      This document describes the gateway function for network slicing, called slice gateway or SLG, 
+      and the role and requirements 
+      are described.  Note that defining a new data plane technology is  not a goal of this draft. 
+      In addition, this draft aims to specify management-related requirements for an SLG, which may be 
       implemented using existing data plane technologies. 
       </t>
     </section>
@@ -397,8 +403,7 @@
       </t>
       
       <t>
-      This section describes overview of NS management system architecture (<xref target="NS-MS"/>) and 
-      position of SLG in NFV (<xref target="SLG-NFV"/>).
+      This section describes overview of NS management system architecture (<xref target="NS-MS"/>) .  
       </t>
       
       <section anchor="NS-MS" title="Network Slice Management System Architecture">
@@ -469,7 +474,7 @@
       <t>
       SLGs are also controlled via orchestrators. An SLG basically belongs to a network element, and it might also 
       belong to server resource if it runs as a VNF. (The position of SLG deployed as a VNF is shown in 
-      <xref target="SLG-NFV"/>.)
+      <xref target="app2"/>.)
       </t>
       
       <t>
@@ -478,46 +483,7 @@
       </t>
       </section>
     
-      <section anchor="SLG-NFV"
-    		title="Position of SLG on ETSI NFV MANO">
-      <t>
-      Some SLGs and the controllers are deployed and run on NSs as VNFs. 
-      An arechitecture for managing lifecycle of VNFs is under standardization 
-      in ETS NFV MANO.
-      </t>
       
-      <t>
-      The mapping of SLG as a VM into ETSI NFV MANO architecture is described in 
-      <xref target="fig_SLG-Position-MANO"/>. In some cases, SLGs are deployed 
-      with containor. VNFs are parts of NS compositions and 
-      NFV orchestrator would be controlled by upper control entities such as 
-      resource orchestrator.
-      </t>
-
-<figure anchor="fig_SLG-Position-MANO"
-		title="Position of SLG as a VM on ETSI NFV MANO">
-  <artwork><![CDATA[
-  
-         OSS/BSS, Service-Orch, Resource-Orch
-           |                |
-           |                |
-         +-v-------+      +-v----------+ 
-         |SLG-Ctrl |<-----+ NFV Orch.  | 
-         +-+-------+      +-+----------+ 
-           |                |           
-         ,-v-------.        |           
-         |  SLG    |        |           
-         :=========:      +-v----------+ 
-         |VM(GstOS)|<-----+VNF Manager | 
-         `---------'      +-+----------+ 
-         +---------+        |           
-         | HostOS/ |      +-v----------+ 
-         | Server  |<-----| VIM        | 
-         +---------+      +------------+ 
-  ]]></artwork>
-</figure>
-    
-    </section>
     
     
     </section>
@@ -828,7 +794,7 @@
       </t>
       
       <t hangText="Mobile Network:">
-      User Equipment, Radio-AP, eNodeB, S/P-GW (<xref target="LTE-Specs"/>), etc.
+      User Equipment, Radio-AP, eNodeB, S/P-GW (<xref target="TS.36.300-3GPP"/>), etc.
       </t>
       
       <t hangText="Data Center:">
@@ -1054,7 +1020,8 @@ GW: Gateway Node
       each function if SLG is composed of combination of several components. However, it is difficult to provide high 
       performance or sufficient throughput for carrier-grade networks with software function. 
       In addition, it would be difficult to implement sufficient QoS control mechanisms with general 
-      servers, because they requires special hardware structures.
+      servers, because they requires special hardware structures. 
+      An example of position of SLG in NFV environment is described in <xref target="app2"/>.
       </t>
 
       <t>
@@ -1195,7 +1162,7 @@ GW: Gateway Node
         </front>
       </reference>
       
-      <reference anchor='LTE-Specs'
+      <reference anchor='TS.36.300-3GPP'
        target='http://www.qtc.jp/3GPP/Specs/36300-830.pdf'>
         <front>
         <title>3GPP TS 36.300</title>
@@ -1205,6 +1172,32 @@ GW: Gateway Node
         </organization>
         </author>
         <date month="December" year="2007"/>
+        </front>
+      </reference>
+
+      <reference anchor='Slicing_Tutrial'
+       target='http://netsoft2018.ieee-netsoft.org/program/tutorials/; http://discovery.ucl.ac.uk/10051374/'>
+        <front>
+        <title>Network Slicing Landscape- Tutorial</title>
+        <author>
+        <organization>
+        IEEE NetSoft2018
+        </organization>
+        </author>
+        <date month="June" year="2018"/>
+        </front>
+      </reference>
+
+      <reference anchor='NECOS'
+       target='hhttp://www.h2020-necos.eu'>
+        <front>
+        <title>Novel Enablers for Cloud Slicing</title>
+        <author>
+        <organization>
+        NECOS
+        </organization>
+        </author>
+        <date/>
         </front>
       </reference>
 
@@ -1273,7 +1266,46 @@ title="List of Requirements for each SLG">
      
     </section>
     
+<section anchor="app2"
+    		title="Position of SLG on ETSI NFV MANO">
+      <t>
+      Some SLGs and the controllers are deployed and run on NSs as VNFs. 
+      An arechitecture for managing lifecycle of VNFs is under standardization 
+      in ETS NFV MANO.
+      </t>
+      
+      <t>
+      The mapping of SLG as a VM into ETSI NFV MANO architecture is described in 
+      <xref target="fig_SLG-Position-MANO"/>. In some cases, SLGs are deployed 
+      with containor. VNFs are parts of NS compositions and 
+      NFV orchestrator would be controlled by upper control entities such as 
+      resource orchestrator.
+      </t>
 
+<figure anchor="fig_SLG-Position-MANO"
+		title="Position of SLG as a VM on ETSI NFV MANO">
+  <artwork><![CDATA[
+  
+         OSS/BSS, Service-Orch, Resource-Orch
+           |                |
+           |                |
+         +-v-------+      +-v----------+ 
+         |SLG-Ctrl |<-----+ NFV Orch.  | 
+         +-+-------+      +-+----------+ 
+           |                |           
+         ,-v-------.        |           
+         |  SLG    |        |           
+         :=========:      +-v----------+ 
+         |VM(GstOS)|<-----+VNF Manager | 
+         `---------'      +-+----------+ 
+         +---------+        |           
+         | HostOS/ |      +-v----------+ 
+         | Server  |<-----| VIM        | 
+         +---------+      +------------+ 
+  ]]></artwork>
+</figure>
+    
+    </section>
   
   </back>
 </rfc>
