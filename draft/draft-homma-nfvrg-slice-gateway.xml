@@ -206,8 +206,7 @@
       
       <t>
       This document describes the gateway function for network slicing, called slice gateway or SLG, 
-      and the role and requirements 
-      are described.  Note that defining a new data plane technology is  not a goal of this draft. 
+      and its role and requirements.  Note that defining a new data plane technology is  not a goal of this draft. 
       In addition, this draft aims to specify management-related requirements for an SLG, which may be 
       implemented using existing data plane technologies. 
       </t>
@@ -215,6 +214,7 @@
 
 
     <section title="Definition of Terms">
+    <!-- add slice provision model draft as a reference-->
       <t>
       <list style="hanging">
       <t hangText="Network Slicing:">
@@ -398,6 +398,8 @@
       are executed at only SLGs. Also, an SLG is not necessarily implemented as a single device or virtual 
       machine (VM).
       </t>
+
+<!--add relationship with slice provision model draft (e.g., provision of modularity and simplicity) -->
     </section>
 
 
@@ -839,6 +841,8 @@
       only fundamental functions. It is not necessarily required if a common transport mechanism in 
       all domains is used.
       </t>
+<!--enhance merit of IS-SLG.-->
+
       </section>
       
       <section title="Inter-Domain SLG(ID-SLG)">
@@ -1321,6 +1325,6 @@ title="List of Requirements for each SLG">
 </figure>
     
     </section>
-  
+<!-- add app describing complement of UPF in 3GPP-->  
   </back>
 </rfc>
