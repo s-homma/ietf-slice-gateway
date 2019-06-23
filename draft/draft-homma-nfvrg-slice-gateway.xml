@@ -61,14 +61,14 @@
 <?rfc subcompact="no" ?> 
 <!-- keep one blank line between list items --> 
 <!-- end of list of popular I-D processing instructions --> 
-<rfc category="info" docName="draft-homma-nmrg-slice-gateway-00">
+<rfc category="info" docName="draft-homma-rtgwg-slice-gateway-00">
   <!-- ***** FRONT MATTER ***** --> 
 
 
 
 
   <front>
-    <title abbrev="draft-homma-nmrg-slice-gateway">
+    <title abbrev="draft-homma-rtgwg-slice-gateway">
     Gateway Function for Network Slicing
     </title>
 
@@ -117,11 +117,26 @@
       </address>
     </author>
 
-    <date day="22" month="October" year="2018"/>
+    <author fullname="Luis M. Contreras-Murillo" initials="L." surname="Contreras-Murillo">
+      <organization>Telefonica I+D</organization>
 
-    <area>irtf</area>
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>Spain</country>
+        </postal>
+        <email>luismiguel.contrerasmurillo@telefonica.com</email>
+      </address>
+    </author>
 
-    <workgroup>nmrg</workgroup>
+    <date/>
+
+    <area>rtg</area>
+
+    <workgroup>rtgwg</workgroup>
     
     <keyword>Internet-Draft</keyword>
 
