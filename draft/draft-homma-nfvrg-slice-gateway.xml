@@ -33,6 +33,7 @@
 <!ENTITY I-D.draft-qiang-coms-netslicing-information-model SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-netslicing-information-model-01.xml">
 <!ENTITY I-D.draft-ietf-spring-segment-routing-mpls SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-spring-segment-routing-mpls-11.xml">
 <!ENTITY I-D.draft-ietf-6man-segment-routing-header SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-6man-segment-routing-header-08.xml">
+<!ENTITY I-D.draft-homma-slice-provision-models SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-homma-slice-provision-models-00.xml">
 
 
 ]> 
@@ -216,33 +217,53 @@
     <section title="Definition of Terms">
     <!-- add slice provision model draft as a reference-->
       <t>
+      This section describes definitions and terminologies related to network slicing, especially gateway function 
+      and interconnection network slices established in each domain. Other complementary definitions are described 
+      in <xref target="I-D.homma-slice-provision-models"/>.
+      </t>
+
+      <t>
       <list style="hanging">
       <t hangText="Network Slicing:">
-      Network slicing is a technology or an approach to create separate virtual networks in support of 
+      Network slicing is a technology or an approach to create separate logical networks in support of 
       services, depending on several requirements, on the same physical resources. This is possible by 
       combinations of several network technologies.
       </t>
       
       <t hangText="Network Slice (NS):">
-      An NS is a virtual network established on network infrastructure. Some include additional network 
-      functions such as firewall or load-balancer in addition to basically forwarding functions such as 
-      switches or routers. It has an overlay architecture and is independent from the underlay network's 
-      topology.
+      An NS is a logical separate network that provides specific network capabilities and characteristics.
       </t>
       
-      <t hangText="NS Subnet:">
-      An NS subnet is partially virtual network established within a single domain.
+      <t hangText="Network Slice Instance (NSI):">
+      An NSI is a logical network instance composed with required infrastructure resources, including networking (WAN), 
+      computing (NFVI) resources,  and some include additional network service functions such as firewall or load-balancer. 
+      It is composed of one or more Network Slice Subnet Instances.
+      </t>
+
+      <t hangText="Network Slice Subnet:">
+      An NS subnet is is a representation of a set of resources structuring a part of NSI within a single domain. 
+      </t>
+
+      <t hangText="Network Slice Subnet Instance (NSSI):">
+      An NSSI is a partial logical network instance represented as a network slicce instance. It is a minimul unit managed 
+      or provided as a network slice. One or more NSSI structure an NSI or an E2E-NSI.
       </t>
       
       
-      <t hangText="End-to-End Network Slice (E2E-NS):">
-      An E2E-NS is a virtual network connecting between end points. E2E slices are composed of a single NS 
-      subnet or multiple NS subnets.
+      <t hangText="End-to-End Network Slice Instance (E2E-NSI):">
+      An E2E-NS is an NSI providing connectivity among end points. An E2E-NSI is used for enphasizing end to 
+      end connectivity provided by an NSI. 
       </t>
       
       <t hangText="Network Slice as a Service (NSaaS):">
-      An NSaaS is a NS distribution model in which a third-party provider hosts NSs and makes them available 
-      to customers.
+      An NSaaS is a service delivery model in which a third-party provider (e.g., vertical customer) hosts NSs 
+      and makes them available to customers. In this model, there are mainly two roles: NS provider and NS tenant.
+      </t>
+      
+      <t hangText="Network Slice Provider (NS Provider):">
+      An NS provider is a person or group that designs and instantiates one or more NSIs/NSSIs, and provides them to 
+      NS tenants. In some cases, an NS provider is an infrastructure operator simultaneously. This includes NSI, NSSI, and 
+      E2E-NSI providers.
       </t>
       
       <t hangText="Network Slice Tenant (NS Tenant):">
@@ -326,27 +347,33 @@
       </t>
       
       <t>
+      Moreover, several variation can be considered on NS provisioning in NSaaS (ref. <xref target="I-D.homma-slice-provision-models"/>),
+      and some cases need abstraction of underlay infrastructure to NS tenants. SLG solution provides controllability of 
+      network functionss for manipulation of NSs intensively, and it can be expected to enphasize the manageability of NSIs in such cases.
+      </t> 
+
+      <t>
       For connecting some different NS subnets and providing a NS that guarantees the prescribed quality from 
-      end to end, SLGs are required to connect such NS subnets. SLGs enable to provide E2E-NSs 
+      end to end, SLGs are required to connect such NS subnets. SLGs enable to provide E2E-NSIs 
       independently of specifications of underlay networks by  hiding the differentiations and connecting between 
-      NS subnets. An overview of this concept is shown in <xref target="fig_E2E-NS"/>. SLGs glue NS subnets 
-      established on each domain and provide an E2E-NS.
+      NS subnets. An overview of this concept is shown in <xref target="fig_E2E-NSI"/>. SLGs glue NSSIs 
+      established on each domain and provide an E2E-NSI.
       </t>
       
 
 
-<figure anchor="fig_E2E-NS"
-        title="E2E-NS composed of multiple NS subnets">
+<figure anchor="fig_E2E-NSI"
+        title="E2E-NSI composed of multiple NS subnets">
   <artwork>
   
-                                E2E-NS
+                               E2E-NSI
           ________________________A_________________________
          /                                                  \
             _____________ ____________      _________________ 
            /            //           /     /                /
- end    +---+   NS   +---+   NS   +---+ +---+   NS   ,------.
- host==>|SLG| Subnet |SLG| Subnet |SLG+-+SLG| Subnet( Server )
-        +---+   #1   +---+   #2   +---+ +---+   #3   `------'
+ end    +---+        +---+        +---+ +---+         ,---.
+ host==>|SLG| NSSI#1 |SLG| NSSI#2 |SLG+-+SLG| NSSI#3 ( APL )
+        +---+        +---+        +---+ +---+         `---'
         /____________//___________/     /________________/
         /____________//___________/     /________________/
               :              :                  :
@@ -367,13 +394,16 @@
                     V                           V
         Domain of Administrator#A     Domain of Administrator#B 
 
+      * Legend
+        APL: Application   
+
   </artwork>
 </figure>
       
 
       <t>
-      Moreover, identification of user service traffic and their allocation/disallocation to the appropriate NS subnet are 
-      required at the edges of E2E-NSs, as shown in <xref target="fig_NS-Selection"/>, and SLGs might take on these roles.
+      Moreover, identification of user service traffic and their allocation/disallocation to the appropriate NSSI are 
+      required at the edges of E2E-NSIs, as shown in <xref target="fig_NS-Selection"/>, and SLGs might take on these roles.
       </t>
 
 <figure anchor="fig_NS-Selection"
@@ -517,7 +547,7 @@
       
       <t>
       Furthermore, an SLG might be required to support handling services provided on NSs in addition to 
-      controlling of NS because an SLG is an edge node on an E2E-NS.
+      controlling of NS because an SLG is an edge node on an E2E-NSI.
       </t>
       
       <t>
@@ -1155,6 +1185,7 @@ GW: Gateway Node
     &I-D.draft-ietf-6man-segment-routing-header;
     &I-D.draft-ietf-sfc-hierarchical;
     &I-D.draft-defoy-coms-subnet-interconnection;
+    &I-D.draft-homma-slice-provision-models;
     
       
       <reference anchor='NFV-Architectural-Framework'
@@ -1197,7 +1228,7 @@ GW: Gateway Node
       <reference anchor='Slicing_Tutrial'
        target='http://netsoft2018.ieee-netsoft.org/program/tutorials/; http://discovery.ucl.ac.uk/10051374/'>
         <front>
-        <title>Network Slicing Landscape- Tutorial</title>
+        <title>Network Slicing Landscape Tutorial</title>
         <author>
         <organization>
         IEEE NetSoft2018
