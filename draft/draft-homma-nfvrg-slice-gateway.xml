@@ -73,21 +73,21 @@
     </title>
 
     <author fullname="Shunsuke Homma" initials="S." surname="Homma">
-      <organization abbrev="NTT">NTT, Corp.</organization>
+      <organization abbrev="NTT">NTT</organization>
 
       <address>
         <postal>
-          <street>3-9-11, Midori-cho</street>
+          <street/>
 
-          <city>Musashino-shi</city>
+          <city/>
 
-          <region>Tokyo</region>
+          <region/>
 
-          <code>180-8585</code>
+          <code/>
 
           <country>Japan</country>
         </postal>
-        <email>homma.shunsuke@lab.ntt.co.jp</email>
+        <email>shunsuke.homma.fp@hco.ntt.co.jp</email>
       </address>
     </author>
     
@@ -96,8 +96,8 @@
       
       <address>
         <postal>
-          <street>1000 Sherbrooke West</street>
-          <city>Montreal</city>
+          <street/>
+          <city/>
           <country>Canada</country>
         </postal>
         <email>Xavier.Defoy@InterDigital.com</email>
