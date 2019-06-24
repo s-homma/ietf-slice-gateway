@@ -349,7 +349,7 @@
       <t>
       Moreover, several variation can be considered on NS provisioning in NSaaS (ref. <xref target="I-D.homma-slice-provision-models"/>),
       and some cases need abstraction of underlay infrastructure to NS tenants. SLG solution provides controllability of 
-      network functionss for manipulation of NSs intensively, and it can be expected to enphasize the manageability of NSIs in such cases.
+      network functionss for manipulation of NSs intensively, and it can be expected to emphasize the manageability of NSIs in such cases.
       </t> 
 
       <t>
@@ -373,7 +373,7 @@
            /            //           /     /                /
  end    +---+        +---+        +---+ +---+         ,---.
  host==>|SLG| NSSI#1 |SLG| NSSI#2 |SLG+-+SLG| NSSI#3 ( APL )
-        +---+        +---+        +---+ +---+         `---'
+        +---+        +---+        +---+ +---+         `-----`
         /____________//___________/     /________________/
         /____________//___________/     /________________/
               :              :                  :
@@ -859,7 +859,7 @@
     
       <section title="Edge SLG(E-SLG)">
       <t>
-      This is located at an edge of an E2E-NS, and supports identification, classification and authentication 
+      E-SLG is located at an edge of an E2E-NS, and supports identification, classification and authentication 
       of user traffic in addition to fundamental SLG functions, such as transport and isolation. 
       Also, it might be required to have capabilities for services delivered on an NS.
       </t>
@@ -867,9 +867,14 @@
       
       <section title="Inter-Subnet SLG(IS-SLG)">
       <t>
-      This is located between NS subnets within a single administrative domain and has 
-      only fundamental functions. It is not necessarily required if a common transport mechanism in 
-      all domains is used.
+      IS-SLG is located between NSSIs within a single administrative domain and has 
+      only fundamental functions such as QoS control or tranlation of headers.
+      </t>
+
+      <t>
+      This type of SLG enables to separate an NSI into some NSSIs. It will provide 
+      modularities of NSSIs, and simplify the management of NSIs. However, it is not necessarily 
+      required if a common transport mechanism in all domains is used.
       </t>
 <!--enhance merit of IS-SLG.-->
 
@@ -877,7 +882,7 @@
       
       <section title="Inter-Domain SLG(ID-SLG)">
       <t>
-      This is located between NS subnets established on different  domains. It supports 
+      ID-SLG is located between NS subnets established on different  domains. It supports 
       authentication for connecting to the opponent SLG in addition to fundamental functions.
       </t>
       </section>
