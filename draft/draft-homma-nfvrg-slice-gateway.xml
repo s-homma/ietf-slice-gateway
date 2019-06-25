@@ -110,8 +110,8 @@
       
       <address>
         <postal>
-          <street>Torrington Place</street>
-          <city>London WC1E 7JE</city>
+          <street/>
+          <city/>
           <country>United Kingdom</country>
         </postal>
         <email>a.galis@ucl.ac.uk</email>
@@ -143,7 +143,7 @@
 
     <abstract>
       <t>This document describes the roles and requirements for a slice gateway that is a function 
-      or function group for handling data plane traffic, such as connecting/disconnecting and compose/decompose network slice subnets and providing 
+      or function group for handling data plane traffic, such as connecting/disconnecting and compose/decompose network slice subnet instances and providing 
       network slices from end to end.  The interworkings between management and control 
       elements at the management and control planes with the gateway function for controlling and 
       orchestrating end-to-end network slices are also presented in this document.
@@ -305,7 +305,7 @@
       </t>
       
       <t hangText="Slice Gateway Function (SLG):">
-      An SLG is a function or a group of functions to connect/disconnect NS subnets. The roles are described in 
+      An SLG is a function or a group of functions to connect/disconnect NSSIs. The roles are described in 
       the following sections.
       </t>
       
@@ -342,7 +342,7 @@
       
       <t>
       In some proposed use cases, an NS is structured across multiple network domains. The capability of 
-      NS subnets might be different because the components are domain-specific. In particular, the differentiation 
+      NSSIs might be different because the components are domain-specific. In particular, the differentiation 
       in capability between different administrative domains is large.
       </t>
       
@@ -353,17 +353,17 @@
       </t> 
 
       <t>
-      For connecting some different NS subnets and providing a NS that guarantees the prescribed quality from 
-      end to end, SLGs are required to connect such NS subnets. SLGs enable to provide E2E-NSIs 
+      For connecting some different NSSIs and providing a NS that guarantees the prescribed quality from 
+      end to end, SLGs are required to connect such NSSIs. SLGs enable to provide E2E-NSIs 
       independently of specifications of underlay networks by  hiding the differentiations and connecting between 
-      NS subnets. An overview of this concept is shown in <xref target="fig_E2E-NSI"/>. SLGs glue NSSIs 
+      NSSIs. An overview of this concept is shown in <xref target="fig_E2E-NSI"/>. SLGs glue NSSIs 
       established on each domain and provide an E2E-NSI.
       </t>
       
 
 
 <figure anchor="fig_E2E-NSI"
-        title="E2E-NSI composed of multiple NS subnets">
+        title="E2E-NSI composed of multiple NSSIs">
   <artwork>
   
                                E2E-NSI
@@ -407,15 +407,15 @@
       </t>
 
 <figure anchor="fig_NS-Selection"
-        title="NS subnet selection of SLG">
+        title="NSSI selection of SLG">
   <artwork>
   
              +-----+    _______________
    end       |     |-->/_______________
-   host ====>| SLG |      NS Subnet#1
+   host ====>| SLG |       NSSI#1
              |@Edge|    _______________
              |     |-->/______________
-             |     |      NS Subnet#2  
+             |     |       NSSI#2  
              |     | :        :
              +-----+
 
@@ -424,7 +424,7 @@
 
 
       <t>
-      Note that, this model has the assumption that transitions of data packets from one NS subnet to another 
+      Note that, this model has the assumption that transitions of data packets from one NSSI to another 
       are executed at only SLGs. Also, an SLG is not necessarily implemented as a single device or virtual 
       machine (VM).
       </t>
@@ -444,7 +444,7 @@
       </t>
       
       <t>
-      An SLG is a network function, and SLGs are installed at edge of NS subnets. NSs are dynamically created, 
+      An SLG is a network function, and SLGs are installed at edge of NSSIs. NSs are dynamically created, 
       deleted, and moved depending on requests from network opertor orNS tenants. Therefore, some SLGs would be 
       required to be VNF for flexible deployment.
       </t>
@@ -513,7 +513,7 @@
       <t>
       NSs are requested from NS tenants via the portal system and the order of creations of an NS is given to 
       the E2E orchestrator from the portal system via BSS/OSS. When an NS across multiple administrative domains 
-      are requested, the portal system that received the request forwards the order to create NS subnets to the other 
+      are requested, the portal system that received the request forwards the order to create NSSIs to the other 
       infrastructure providers' systems via Cross-Segment Slice Manager. The details of COMS architecture are described 
       in the architecture document ([I-D.qiang-coms-architecture]).
       </t>
@@ -597,7 +597,7 @@
           based on application used in the communication or location of the user equipment (UE).
           </t>
           
-          <t hangText="Between NS subnets:">
+          <t hangText="Connection Point between NSSI:">
           An SLG MUST identify and classify data packet based on the tunnel-ID or virtual routing and forwarding (VRF) 
           that received the packets. If specific slice identifier such as a value mapped in the metadata field of 
           the IP header is used; an SLG should identify and classify data packets with the ID.
@@ -610,6 +610,7 @@
           <t>
           SLGs MUST provide functions for transport data packets depending on the specifications of the 
           underlay networks.
+          <!-- add Reza's draft as a reference about how to stitching NSSIs -->
           </t>
           
           <t>
@@ -642,11 +643,11 @@
             
           <t hangText="Translation of Encapsulation/Tagging Form:">
           SLG MUST support to translate tunnel header or tag of received packets to the appropriate tunnel header
-          or tag when it forwards data packets to the next NS subnet that has different transport capability. 
+          or tag when it forwards data packets to the next NSSI that has different transport capability. 
           </t>
           
           <t hangText="Distribution of Traffic:">
-          Some NSs have multiple route between the same end points within the same NS subnet because of traffic 
+          Some NSs have multiple route between the same end points within the same NSSI because of traffic 
           engineering, switching to a redundant path, or other reasons, and SLG MAY forward data packets with the 
           appropriate route based on some trigger information. An example of the overview of this requirement is 
           shown in <xref target="fig_NS-Distribution"/>. In this figure, there are two routes, main and 
@@ -670,7 +671,7 @@
     +-----+   *           *     +-----+
      /         * * * * *         /
     /___________________________/
-      NS Subnet                  
+      NSSI                  
                            *** : Main-route
                            ... : Sub-route
                            
@@ -680,11 +681,11 @@
 
         </section>
           
-        <section title="Isolation between NSs">
+        <section title="Isolation among NSs">
         <t>
         In NSaaS, isolation control is required for avoiding an NS being affect by other NSs. 
         Traffic engineering or QoS control is ones of the most fundamental approaches to prevent 
-        disturbances between NSs.
+        disturbances among NSs.
         </t>
         
         <t>
@@ -705,6 +706,11 @@
           </list>
         </t>
         </section>
+
+        <section title="Traffic Monitoring">
+        <t>TBD</t>
+        </section>
+
       
         <section title="Service Chaining as Infrastructural Mechanism(*Optional)">
         <t>
@@ -882,7 +888,7 @@
       
       <section title="Inter-Domain SLG(ID-SLG)">
       <t>
-      ID-SLG is located between NS subnets established on different  domains. It supports 
+      ID-SLG is located between NSSIs established on different  domains. It supports 
       authentication for connecting to the opponent SLG in addition to fundamental functions.
       </t>
       </section>
@@ -896,8 +902,8 @@
     <t>
       <list style="hanging">
       <t hangText="E-SLG:">
-       An E-SLG accommodates several hosts and NS subnets. This has a forwarding table of end hosts and insert their 
-       packets to the appropriate NS subnet. An overview of this connection is shown in 
+       An E-SLG accommodates several hosts and NSSIs. This has a forwarding table of end hosts and insert their 
+       packets to the appropriate NSSI. An overview of this connection is shown in 
        <xref target="fig_E-SLG-Connection"/>.
        </t>
        </list>
@@ -911,10 +917,10 @@
               +-----+
   host#1 ====>|     |    _______________
               |     |-->/_______________
-  host#2 ====>|E-SLG|     NS Subnet#1
+  host#2 ====>|E-SLG|       NSSI#1
               |     |    _______________
   host#3 ====>|     |-->/_______________
-              |     |     NS Subnet#2
+              |     |       NSSI#2
    :     :    |     | :        :
               +-----+
               
@@ -935,7 +941,7 @@ Edge: Edge Node
       <t>
         <list style="hanging">
         <t hangText="IS-SLG:">
-        An IS-SLG has the role of mediator between NS subnets and passes packets received from an NS subnet to the 
+        An IS-SLG has the role of mediator between NSSIs and passes packets received from an NSSI to the 
         next one. If transport methods used in each domain are different, the IS-SLG translate packet form 
         to the appropriate one. An overview of this connection is shown in 
         <xref target="fig_IS-SLG-Connection"/>.
@@ -952,7 +958,7 @@ Edge: Edge Node
                 +------+    
     _________   |      |     ___________
    _________/-->|IS-SLG|--> /__________
-  NS Subnet#1   |      |    NS Subnet#2
+    NSSI#1      |      |      NSSI#2
                 +------+
 
 ///////////////////////////////////////
@@ -988,7 +994,7 @@ GW: Gateway Node
                 +------+        +------+
     _________   |      | ______ |      |    ___________
    _________/-->|ID-SLG|O______)|ID-SLG|-->/__________
-  NS Subnet#1   |      | Tunnel |      |   NS Subnet#2
+     NSSI#1     |      | Tunnel |      |      NSSI#2
                 +------+        +------+
 
 ///////////////////////////////////////////////////////
@@ -1009,17 +1015,17 @@ GW: Gateway Node
       <section title="Vertical Connection">
       <t>
       There are two patterns of vertical connection of SLGs in the middle of E2E-NSs. The first pattern is 
-      that the SLGs accommodate only a set of NS subnets, which are composition of the same E2E-NS. In this 
-      pattern, such SLGs are not required to support NS subnet selection, however, establishment of a new 
+      that the SLGs accommodate only a set of NSSIs, which are composition of the same E2E-NS. In this 
+      pattern, such SLGs are not required to support NSSI selection, however, establishment of a new 
       SLG is required when a new E2E-NS is created. This might causes extra overheads because 
       of deploying many SLGs.
       </t>
 
       <t>
-      The other pattern is that such SLGs are acceptable to accommodate multiple NS subnets from each domain. 
-      In this pattern, SLGs are support NS subnet selection. On the other hand, this pattern can restrain the number 
-      of SLGs. Also, it is easy to provide transit of data packets from an NS subnet 
-      to other subnet on the same domain.
+      The other pattern is that such SLGs are acceptable to accommodate multiple NSSIs from each domain. 
+      In this pattern, SLGs are support NSSI selection. On the other hand, this pattern can restrain the number 
+      of SLGs. Also, it is easy to provide transit of data packets from an NSSI 
+      to another NSSI on the same domain.
       </t>
        
       <t>
@@ -1034,12 +1040,12 @@ GW: Gateway Node
                 +-----+    
     _________   |     |    ___________
    _________/-->|SLG#1|-->/__________
-  NS Subnet#1   |     |    NS Subnet#2
+    NSSI#1      |     |      NSSI#2
                 +-----+
                 +-----+
     _________   |     |    ___________
    _________/-->|SLG#2|-->/__________
-  NS Subnet#3   |     |    NS Subnet#4
+    NSSI#3      |     |      NSSI#4
                 +-----+   
        :           :             :
 
@@ -1053,10 +1059,10 @@ GW: Gateway Node
                 +-----+    
     _________   |     |    ___________
    _________/-->|     |-->/__________
-  NS Subnet#1   |SLG#1|    NS Subnet#2
+    NSSI#1      |SLG#1|      NSSI#2
     _________   |     |    ___________
    _________/-->|     |-->/__________
-  NS Subnet#3   |     |    NS Subnet#4
+    NSSI#3   |     |      NSSI#4
                 |     |
        :        |     |         :
                 +-----+
@@ -1092,21 +1098,21 @@ GW: Gateway Node
     
     
     <section anchor="SLG-Interconnection"
-    title="Interconnection between NS subnets">
+    title="Interconnection between NSSIs">
     <t>
-    SLG provides interconnectivity between NS subnets. The concept and fundamental framework including 
-    the related NS information model are described in subnets interconnection document 
+    SLG provides interconnectivity between NSSIs. The concept and fundamental framework including 
+    the related NS information model are described in NSSIs interconnection document 
     (<xref target="I-D.defoy-coms-subnet-interconnection"/>). 
     </t>
     
     <t>
-    This section is focused on interconnection between NS subnets established on different administrative 
+    This section is focused on interconnection between NSSIs established on different administrative 
     domains, and describes considerations related to this condition.
     </t>
     
       <section title="Pre-arrangement of transport protocols">
       <t>
-      For interconnection between different administrative NS subnets, pre-arrangement of the transport protocol, 
+      For interconnection between different administrative NSSIs, pre-arrangement of the transport protocol, 
       which is used to connect between SLGs is required. Orchestration systems indicate the protocol and 
       configuration to each SLG.
       </t>
