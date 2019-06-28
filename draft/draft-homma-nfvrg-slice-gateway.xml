@@ -23,7 +23,10 @@
 <!ENTITY RFC7348 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7348.xml">
 <!ENTITY RFC7665 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7665.xml"> 
 <!ENTITY RFC8300 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8300.xml">
+<!ENTITY RFC8459 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8459.xml">
+<!--
 <!ENTITY I-D.draft-ietf-sfc-hierarchical SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-sfc-hierarchical-05.xml">
+-->
 <!ENTITY I-D.draft-netslices-usecases SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-netslices-usecases-02.xml"> 
 <!--
 <!ENTITY I-D.draft-qiang-coms-architecture SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-architecture-00.xml">
@@ -347,7 +350,7 @@
       </t>
       
       <t>
-      Moreover, several variation can be considered on NS provisioning in NSaaS (ref. <xref target="I-D.homma-slice-provision-models"/>),
+      Moreover, several variations can be considered on NS provisioning in NSaaS (ref. <xref target="I-D.homma-slice-provision-models"/>),
       and some cases need abstraction of underlay infrastructure to NS tenants. SLG solution provides controllability of 
       network functionss for manipulation of NSs intensively, and it can be expected to emphasize the manageability of NSIs in such cases.
       </t> 
@@ -707,10 +710,6 @@
         </t>
         </section>
 
-        <section title="Traffic Monitoring">
-        <t>TBD</t>
-        </section>
-
       
         <section title="Service Chaining as Infrastructural Mechanism(*Optional)">
         <t>
@@ -725,7 +724,7 @@
         service chaining architecture defined in <xref target="RFC7665"/>, 
         some SLG would be required to support following functions; classifier(CF), service function forwarder 
         (SFF), and inter boundary node(IBN). (Details of CF, SFF and IBN are described in SFC documents; 
-        <xref target="RFC7665"/>, <xref target="I-D.ietf-sfc-hierarchical"/>.) 
+        <xref target="RFC7665"/>, <xref target="RFC8459"/>.) 
         </t>
         </section>
       </section>
@@ -761,12 +760,20 @@
         
         <section title="Operation Administration and Maintenance(OAM)">
         <t>
-        In management of NSs, OAM or monitoring mechanisms for both underlay and overlay networks is 
+        In management of NSs, OAM mechanisms for both underlay and overlay networks is 
         required for SLGs. For an underlay network, an SLG MUST have OAM functions to confirm connectivity to 
-        interconnect equipment. For an overlay network, an SLG MUST have OAM functions to confirm connectivity to 
-        the some node on the same NS, and measure the traffic amount of flowing packets on each NS. 
+        interconnect equipment. For an overlay network as an NS, an SLG MUST have OAM functions to confirm connectivity to 
+        the nodes on the same NS. 
         </t>
         </section>
+
+        <section title="Traffic Monitoring">
+        <t>
+        An SLG shall support monitoring of traffic amount and latency as a mechanism for checking whether each of the accomodated NSs 
+        is satisfying its SLA. When an NS can't fulfill its SLA, the SLG MUST send a notification to any listening system.
+        </t>
+        </section>
+
       </section>
     </section>
       
@@ -1023,7 +1030,7 @@ GW: Gateway Node
 
       <t>
       The other pattern is that such SLGs are acceptable to accommodate multiple NSSIs from each domain. 
-      In this pattern, SLGs are support NSSI selection. On the other hand, this pattern can restrain the number 
+      In this pattern, SLGs support NSSI selection. On the other hand, this pattern can restrain the number 
       of SLGs. Also, it is easy to provide transit of data packets from an NSSI 
       to another NSSI on the same domain.
       </t>
@@ -1189,12 +1196,13 @@ GW: Gateway Node
     &RFC7348;
     &RFC7665;
     &RFC8300;
+    &RFC8459;
     &I-D.draft-netslices-usecases;
     &I-D.draft-qiang-coms-netslicing-information-model;
 <!--&I-D.draft-qiang-coms-architecture;-->
     &I-D.draft-ietf-spring-segment-routing-mpls;
     &I-D.draft-ietf-6man-segment-routing-header;
-    &I-D.draft-ietf-sfc-hierarchical;
+<!--&I-D.draft-ietf-sfc-hierarchical;-->
     &I-D.draft-defoy-coms-subnet-interconnection;
     &I-D.draft-homma-slice-provision-models;
     
@@ -1302,6 +1310,8 @@ title="List of Requirements for each SLG">
 |AAA            ||  M    |  -    |  M    |Section 5.1.2.3.|
 +---------------++-------+-------+-------+----------------+
 |OAM            ||  M    |  M    |  M    |Section 5.1.2.4.|
++---------------++-------+-------+-------+----------------+
+|Monitoring     ||  M    |  M    |  M    |Section 5.1.2.5.|
 +=========================================================+
 |*Data-Plane for Service on NS                            |
 +=========================================================+
@@ -1367,6 +1377,14 @@ title="List of Requirements for each SLG">
 </figure>
     
     </section>
-<!-- add app describing complement of UPF in 3GPP-->  
+<!-- add app describing complement of UPF in 3GPP--> 
+
+    <section anchor="app3"
+            title="Complemention of Network Slicing in 3GPP">
+    <t>
+    TBD
+    </t>
+    </section>
+
   </back>
 </rfc>
