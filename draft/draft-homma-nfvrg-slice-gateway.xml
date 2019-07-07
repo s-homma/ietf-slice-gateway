@@ -37,6 +37,7 @@
 <!ENTITY I-D.draft-ietf-spring-segment-routing-mpls SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-spring-segment-routing-mpls-11.xml">
 <!ENTITY I-D.draft-ietf-6man-segment-routing-header SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-6man-segment-routing-header-08.xml">
 <!ENTITY I-D.draft-homma-slice-provision-models SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-homma-slice-provision-models-00.xml">
+<!ENTITY I-D.draft-rokui-5g-transport-slice SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-rokui-5g-transport-slice-00.xml">
 
 
 ]> 
@@ -1205,6 +1206,7 @@ GW: Gateway Node
 <!--&I-D.draft-ietf-sfc-hierarchical;-->
     &I-D.draft-defoy-coms-subnet-interconnection;
     &I-D.draft-homma-slice-provision-models;
+    &I-D.draft-rokui-5g-transport-slice;
     
       
       <reference anchor='NFV-Architectural-Framework'
@@ -1231,10 +1233,23 @@ GW: Gateway Node
         </front>
       </reference>
       
+      <reference anchor='TS.23.501-3GPP' target="http://www.3gpp.org/ftp//Specs/archive/23_series/23.501/23501-g00.zip"> 
+        <front> 
+        <title>3GPP TS 23.501 (V16.0.0): System Architecture for 5G System; Stage 2</title> 
+        <author> 
+        <organization> 
+        3rd Generation Partnership Project (3GPP) 
+        </organization> 
+        </author> 
+        <date month="September" year="2018"/> 
+        </front> 
+      </reference> 
+
       <reference anchor='TS.36.300-3GPP'
        target='http://www.qtc.jp/3GPP/Specs/36300-830.pdf'>
         <front>
-        <title>3GPP TS 36.300</title>
+        <title>Evolved Universal Terrestrial Radio Access (E-UTRA) and 
+        Evolved Universal Terrestrial Radio Access Network (E-UTRAN); Overall description; Stage 2</title>
         <author>
         <organization>
         3rd Generation Partnership Project (3GPP)
@@ -1382,8 +1397,21 @@ title="List of Requirements for each SLG">
     <section anchor="app3"
             title="Complemention of Network Slicing in 3GPP">
     <t>
-    TBD
+    The 3GPP 5GS is natively support network slicing (ref. <xref target="TS.23.501-3GPP"/>, and UPF provides some functions 
+    for manuplation of NSs, such as NS selection, QoS control, traffic steering, etc. 3GPP is responsible for standatdizing 
+    user plane manipulation for mobility management, and interworking with transport on underlay network and external 
+    networks of 5GS  such as DNs is out of scope in 3GPP.
     </t>
+
+    <t>
+    SLG will provide  complemental definitions of functions and interfaces for providing E2E-NSI including 5GS.  A way of 
+    interworking between transport NS and RAN/UPF is described in <xref target="I-D.rokui-5g-transport-slice"/>.
+    </t>
+
+    <t>
+    Further study is TBD.
+    </t>
+
     </section>
 
   </back>
