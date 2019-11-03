@@ -66,7 +66,7 @@
 <?rfc subcompact="no" ?> 
 <!-- keep one blank line between list items --> 
 <!-- end of list of popular I-D processing instructions --> 
-<rfc category="info" docName="draft-homma-rtgwg-slice-gateway-00">
+<rfc category="info" docName="draft-homma-rtgwg-slice-gateway-01">
   <!-- ***** FRONT MATTER ***** --> 
 
 
@@ -838,13 +838,13 @@
 
  <section title="Structure  of SLG">
  <t>
- SLG is composed of data plan entities and controller. SLG Data plane entity (SLG-D) has functions to 
+ SLG is composed of data plane entities and their controller. SLG Data plane entity (SLG-D) has functions to 
  manipulate NSSIs and to handle traffic on slices. Function types supported by SLG-D are listed 
- <xref target='SLG-Req'/>. SLG controller (SLG-C) accomodates multiple SLG Data plane entities, and 
+ <xref target="SLG-Req"/>. SLG controller (SLG-C) accomodates multiple SLG Data plane entities, and 
  sets configurations into each SLG-D. SLG-C has two types of northbound interfaces: to 
  communicate with higher operation systems such as OSS/BSS and orchestrator, and to expose controlability 
  of traffic on slice to external customers and tenants. The overview of SLG structure is shown in 
- <xref target="fig_slg-structure'/>.
+ <xref target="fig_slg-structure"/>.
  </t>
  
 <figure anchor="fig_slg-structure" title="Overview of SLG Structure">
@@ -1152,7 +1152,7 @@ GW: Gateway Node
     <t>
     SLG provides interconnectivity between NSSIs. The concept and fundamental framework including 
     the related NS information model are described in NSSIs interconnection document 
-    (<xref target="I-D.defoy-coms-subnet-interconnection"/>). 
+    (<xref target="I-D.defoy-coms-subnet-interconnection"/>).  
     </t>
     
     <t>
@@ -1198,14 +1198,27 @@ GW: Gateway Node
       </section>
     </section>
     
-    <section title="Northbound Interface">
-    <section title="Interface for Higher Operation Systems">
-    TBD
-    </section>
-
-    <section title="Interface for Customers/Tenants">
+    <section title="Interfaces of SLG Controller">
+    <section title="Southbound Interface">
+    <t>
+    SLG-C supports protocols to communicate with SLG-Ds. Information and prameters exchanged between  
+    SLG-D and SLG-C are TBD.
+    </t>
+    </section>  
+    
+    
+    <section title="Northbound Interface for Higher Operation Systems">
+    <t>
     TBD
     </t>
+    </section>
+
+    <section title="Northbound Interface for Customers/Tenants">
+    <t>
+    TBD
+    </t>
+    </section>
+    </section>
 
     <section title="Security Considerations">
     <t>
