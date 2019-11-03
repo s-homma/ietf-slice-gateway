@@ -122,18 +122,22 @@
       </address>
     </author>
 
-    <author fullname="Luis M. Contreras-Murillo" initials="L." surname="Contreras-Murillo">
-      <organization>Telefonica I+D</organization>
-
+    <author fullname="Luis M. Contreras"
+            initials="LM."
+            surname="Contreras">
+      <organization abbrev="Telefonica">
+        Telefonica
+      </organization>
       <address>
         <postal>
-          <street/>
-          <city/>
-          <region/>
-          <code/>
+          <street>Ronda de la Comunicacion, s/n</street>
+          <street>Sur-3 building, 3rd floor</street>
+          <city>Madrid</city>
+          <code>28050</code>
           <country>Spain</country>
         </postal>
         <email>luismiguel.contrerasmurillo@telefonica.com</email>
+        <uri>http://lmcontreras.com/</uri>
       </address>
     </author>
 
@@ -838,30 +842,34 @@
 
  <section title="Structure  of SLG">
  <t>
- SLG is composed of data plane entities and their controller. SLG Data plane entity (SLG-D) has functions to 
- manipulate NSSIs and to handle traffic on slices. Function types supported by SLG-D are listed 
- <xref target="SLG-Req"/>. SLG controller (SLG-C) accomodates multiple SLG Data plane entities, and 
- sets configurations into each SLG-D. SLG-C has two types of northbound interfaces: to 
- communicate with higher operation systems such as OSS/BSS and orchestrator, and to expose controlability 
- of traffic on slice to external customers and tenants. The overview of SLG structure is shown in 
- <xref target="fig_slg-structure"/>.
+ SLG is composed of data plan entities and controller. SLG Data plane entity (SLG-D) has functions to manipulate 
+ NSSIs and to handle traffic on slices. Function types supported by SLG-D are listed <xref target="SLG-Req"/>. 
+ SLG controller (SLG-C) accomodates multiple SLG Data plane entities via its southbound interface, and sets 
+ configurations into each SLG-D. SLG-C also has a northbound interface and it provides accesses to two 
+ endpoints: higher operation systems such as orchestrator, and to external customers and tenants which 
+ own their NSSIs. Then, functionality and controllability exposed to customers/tenants ashould be limited, 
+ and the access must be secure (i.e., authentication and admission control should be supported). 
+ The overview of SLG structure is shown in <xref target="fig_slg-structure"/>.
  </t>
  
 <figure anchor="fig_slg-structure" title="Overview of SLG Structure">
   <artwork align="center"><![CDATA[
-    Customers,            OSS/BSS,
-     tenants            Orchestrator
 
-        |                    |
-        |           +--------+
-        |           |
-    +---+-----------+--+
+  Customers/    Operation System
+   tenants     (i.e.,Orchestrator)
+
+      |                 |
+      |                 |
+      +-------+---------+
+              |
+              |
+    +---------+--------+
     |  SLG Controller  |
-    +---+---+------+---+
-        |   | ...  | 
-        |          |
-        |          |
-        |          +-------------------------------+
+    +---------+--------+
+              |
+        +-----+-----+
+        |           |
+        |           +------------------------------+
         |                                          |
         |                                          |
   +-----+----------------------------+             |
@@ -873,6 +881,7 @@
   ||decap| | QoS | | Fwd | |encap| ..|     |               |
   |`-----' `-----' `-----' `-----'   |     +---------------+
   +----------------------------------+
+  
 ]]></artwork>
 </figure>
 
