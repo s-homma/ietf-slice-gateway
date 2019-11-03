@@ -835,7 +835,49 @@
     </section>
   </section>      
 
-          
+
+ <section title="Structure  of SLG">
+ <t>
+ SLG is composed of data plan entities and controller. SLG Data plane entity (SLG-D) has functions to 
+ manipulate NSSIs and to handle traffic on slices. Function types supported by SLG-D are listed 
+ <xref target='SLG-Req'/>. SLG controller (SLG-C) accomodates multiple SLG Data plane entities, and 
+ sets configurations into each SLG-D. SLG-C has two types of northbound interfaces: to 
+ communicate with higher operation systems such as OSS/BSS and orchestrator, and to expose controlability 
+ of traffic on slice to external customers and tenants. The overview of SLG structure is shown in 
+ <xref target="fig_slg-structure'/>.
+ </t>
+ 
+<figure anchor="fig_slg-structure" title="Overview of SLG Structure">
+  <artwork align="center"><![CDATA[
+    Customers,            OSS/BSS,
+     tenants            Orchestrator
+
+        |                    |
+        |           +--------+
+        |           |
+    +---+-----------+--+
+    |  SLG Controller  |
+    +---+---+------+---+
+        |   | ...  | 
+        |          |
+        |          |
+        |          +-------------------------------+
+        |                                          |
+        |                                          |
+  +-----+----------------------------+             |
+  |   SLG D-plane Entity_1           |             |
+  |.-----. .-----. .----------.      |     +-------+-------+
+  || FIB | | OAM | |Monitoring| ..   |     |               |
+  |`-----' `-----' `----------'      | ... |  SLG D-plan   |
+  |.-----. .-----. .-----. .-----.   |     |    Entity_n   |
+  ||decap| | QoS | | Fwd | |encap| ..|     |               |
+  |`-----' `-----' `-----' `-----'   |     +---------------+
+  +----------------------------------+
+]]></artwork>
+</figure>
+
+</section>
+
   <section title="Deployment of SLG">
   <t>
   This section describes considerations related with deployment of SLGs.
@@ -1155,6 +1197,15 @@ GW: Gateway Node
       </t>
       </section>
     </section>
+    
+    <section title="Northbound Interface">
+    <section title="Interface for Higher Operation Systems">
+    TBD
+    </section>
+
+    <section title="Interface for Customers/Tenants">
+    TBD
+    </t>
 
     <section title="Security Considerations">
     <t>
