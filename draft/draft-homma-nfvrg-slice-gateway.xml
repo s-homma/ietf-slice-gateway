@@ -843,7 +843,8 @@
  <section title="Structure  of SLG">
  <t>
  SLG is composed of data plan entities and controller. SLG Data plane entity (SLG-D) has functions to manipulate 
- NSSIs and to handle traffic on slices. Function types supported by SLG-D are listed <xref target="SLG-Req"/>. 
+ NSSIs and to handle traffic on slices. In some cases, an SLG-D  is composed  of several physical devices and/or 
+ virtual instances. Function types supported by SLG-D are listed <xref target="SLG-Req"/>. 
  SLG controller (SLG-C) accomodates multiple SLG Data plane entities via its southbound interface, and sets 
  configurations into each SLG-D. SLG-C also has a northbound interface and it provides accesses to two 
  endpoints: higher operation systems such as orchestrator, and to external customers and tenants which 
