@@ -23,6 +23,7 @@
 <!ENTITY RFC7348 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7348.xml">
 <!ENTITY RFC7665 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7665.xml"> 
 <!ENTITY RFC8300 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8300.xml">
+<!ENTITY RFC8453 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8453.xml">
 <!ENTITY RFC8459 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8459.xml">
 <!--
 <!ENTITY I-D.draft-ietf-sfc-hierarchical SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-sfc-hierarchical-05.xml">
@@ -66,7 +67,7 @@
 <?rfc subcompact="no" ?> 
 <!-- keep one blank line between list items --> 
 <!-- end of list of popular I-D processing instructions --> 
-<rfc category="info" docName="draft-homma-rtgwg-slice-gateway-01">
+<rfc category="info" docName="draft-homma-rtgwg-slice-gateway-02">
   <!-- ***** FRONT MATTER ***** --> 
 
 
@@ -95,7 +96,26 @@
         <email>shunsuke.homma.fp@hco.ntt.co.jp</email>
       </address>
     </author>
-    
+
+    <author fullname="Takayuki Nakamura" initials="T." surname="Nakamura">
+      <organization abbrev="NTT">NTT</organization>
+
+      <address>
+        <postal>
+          <street/>
+
+          <city/>
+
+          <region/>
+
+          <code/>
+
+          <country>Japan</country>
+        </postal>
+        <email>takayuki.nakamura.gy@hco.ntt.co.jp</email>
+      </address>
+    </author>
+
     <author fullname="Xavier de Foy" initials="X." surname="de Foy">
       <organization abbrev="InterDigital Inc.">InterDigital Inc.</organization>
       
@@ -140,6 +160,21 @@
         <uri>http://lmcontreras.com/</uri>
       </address>
     </author>
+
+    <author fullname="Reza Rokui" initials="R." surname="Rokui">
+      <organization>Nokia</organization>
+
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>Canada</country>
+        </postal>
+        <email>reza.rokui@nokia.com</email>
+      </address>
+    </author>   
 
     <date/>
 
@@ -233,15 +268,21 @@
       <t>
       <list style="hanging">
       <t hangText="Network Slicing:">
-      Network slicing is a technology or an approach to create separate logical networks in support of 
+      Network slicing is a methodology to create separate logical networks in support of 
       services, depending on several requirements, on the same physical resources. This is possible by 
       combinations of several network technologies.
       </t>
       
       <t hangText="Network Slice (NS):">
-      An NS is a logical separate network that provides specific network capabilities and characteristics.
+      An NS is a logical separate network that provides specific network capabilities and characteristics. It is  
+      composed of set of resources including virtual/physical forwarding functions, links, and network functions.
+      There are several types of NS depending on network types where the  
+      NS is deployed. Transport slice is one of them and the detailed definition is provided in  
+      [I-D.rokui-teas-transport-slice-definition]. 
+      (Note that 3GPP and other SDOs use definitions "Network Slice Instance/NSI" and "Network Slice Subnet Instance/NSSI", 
+      but they are  expressed as NS in this document.)
       </t>
-      
+<!--      
       <t hangText="Network Slice Instance (NSI):">
       An NSI is a logical network instance composed with required infrastructure resources, including networking (WAN), 
       computing (NFVI) resources,  and some include additional network service functions such as firewall or load-balancer. 
@@ -256,11 +297,11 @@
       An NSSI is a partial logical network instance represented as a network slicce instance. It is a minimul unit managed 
       or provided as a network slice. One or more NSSI structure an NSI or an E2E-NSI.
       </t>
+-->      
       
-      
-      <t hangText="End-to-End Network Slice Instance (E2E-NSI):">
-      An E2E-NS is an NSI providing connectivity among end points. An E2E-NSI is used for enphasizing end to 
-      end connectivity provided by an NSI. 
+      <t hangText="End-to-End Network Slice (E2E-NS):">
+      An E2E-NS is an NS providing connectivity among end points. An E2E-NS is used for enphasizing end to 
+      end connectivity provided by an NS.
       </t>
       
       <t hangText="Network Slice as a Service (NSaaS):">
@@ -301,7 +342,8 @@
       </t>
       
       <t hangText="Virtual Network:">
-      A virtual network is a network running a number of virtual network functions. 
+      A virtual network is a network running a number of virtual network functions. The detailed definition  
+      is provided in <xref target="RFC8453"/>. 
       </t>
       
       <t hangText="Virtual Network Function (VNF):"> 
@@ -1271,6 +1313,7 @@ GW: Gateway Node
     &RFC7348;
     &RFC7665;
     &RFC8300;
+    &RFC8453;
     &RFC8459;
     &I-D.draft-netslices-usecases;
     &I-D.draft-qiang-coms-netslicing-information-model;
