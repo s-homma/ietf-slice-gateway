@@ -31,15 +31,17 @@
 <!ENTITY I-D.draft-netslices-usecases SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-netslices-usecases-02.xml"> 
 <!--
 <!ENTITY I-D.draft-qiang-coms-architecture SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-architecture-00.xml">
--->
 <!ENTITY I-D.draft-qiang-coms-netslicing-information-model SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-netslicing-information-model-01.xml">
+-->
 <!ENTITY I-D.draft-defoy-coms-subnet-interconnection SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-defoy-coms-subnet-interconnection-01.xml"> 
+<!--
 <!ENTITY I-D.draft-qiang-coms-netslicing-information-model SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-netslicing-information-model-01.xml">
+-->
 <!ENTITY I-D.draft-ietf-spring-segment-routing-mpls SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-spring-segment-routing-mpls-11.xml">
 <!ENTITY I-D.draft-ietf-6man-segment-routing-header SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-6man-segment-routing-header-08.xml">
 <!ENTITY I-D.draft-homma-slice-provision-models SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-homma-slice-provision-models-00.xml">
 <!ENTITY I-D.draft-rokui-5g-transport-slice SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-rokui-5g-transport-slice-00.xml">
-
+<!ENTITY I-D.draft-pedro-nmrg-intelligent-reasoning SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-pedro-nmrg-intelligent-reasoning-01.xml">
 
 ]> 
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?> 
@@ -176,6 +178,21 @@
       </address>
     </author>   
 
+     <author fullname="Pedro Martinez-Julia" initials="P." surname="Martinez-Julia">
+      <organization>NICT</organization>
+
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>Japan</country>
+        </postal>
+        <email>pedro@nict.go.jp</email>
+      </address>
+    </author>
+
     <date/>
 
     <area>rtg</area>
@@ -187,7 +204,7 @@
     <abstract>
       <t>This document describes the roles and requirements for a slice gateway that is a function 
       or function group for handling data plane traffic, such as connecting/disconnecting and compose/decompose network slice subnet instances and providing 
-      network slices from end to end.  The interworkings between management and control 
+      network slices from end to end.  The interworking between management and control 
       elements at the management and control planes with the gateway function for controlling and 
       orchestrating end-to-end network slices are also presented in this document.
       </t>
@@ -236,7 +253,7 @@
 
       <t>
       Assumed use cases of network slices include establishment of virtual networks whose qualities are 
-      guaranteed from end to end under the supervision of multi-domain orchstrators. In such cases, a network slice 
+      guaranteed from end to end under the supervision of multi-domain orchestrators. In such cases, a network slice 
       subnet is created on each domain, such as access network and core network, and an end-to-end network slices is 
       composed of connected subnets.
       </t>
@@ -282,25 +299,29 @@
       (Note that 3GPP and other SDOs use definitions "Network Slice Instance/NSI" and "Network Slice Subnet Instance/NSSI", 
       but they are  expressed as NS in this document.)
       </t>
-<!--      
+   
       <t hangText="Network Slice Instance (NSI):">
       An NSI is a logical network instance composed with required infrastructure resources, including networking (WAN), 
       computing (NFVI) resources,  and some include additional network service functions such as firewall or load-balancer. 
-      It is composed of one or more Network Slice Subnet Instances.
+      It is composed of one or more Network Slice Subnet Instances. Note that, the word "instance" is not used in the definition 
+      of transport slice discussed in the NS-DT (Network Slice Design Team). 
       </t>
 
       <t hangText="Network Slice Subnet:">
-      An NS subnet is is a representation of a set of resources structuring a part of NSI within a single domain. 
+      An NS subnet is a representation of a set of resources structuring a part of NSI within a single domain. Network slice 
+      subnet concept is proposed in <xref target="TS.28.530-3GPP"/>. Note that, in the definition of transport slice discussed 
+      in the NS-DT, Network Slice and Network Slice Subnet are not distinguished, and all types 
+      of network slices in transport network are called transport slice.
       </t>
 
       <t hangText="Network Slice Subnet Instance (NSSI):">
-      An NSSI is a partial logical network instance represented as a network slicce instance. It is a minimul unit managed 
+      An NSSI is a partial logical network instance represented as a network slice instance. It is a minimal unit managed 
       or provided as a network slice. One or more NSSI structure an NSI or an E2E-NSI.
       </t>
--->      
       
-      <t hangText="End-to-End Network Slice (E2E-NS):">
-      An E2E-NS is an NS providing connectivity among end points. An E2E-NS is used for enphasizing end to 
+      
+      <t hangText="End-to-End Network Slice Instance (E2E-NSI):">
+      An E2E-NSI is an NS providing connectivity among end points. An E2E-NS is used for emphasizing end to 
       end connectivity provided by an NS.
       </t>
       
@@ -399,7 +420,7 @@
       <t>
       Moreover, several variations can be considered on NS provisioning in NSaaS (ref. <xref target="I-D.homma-slice-provision-models"/>),
       and some cases need abstraction of underlay infrastructure to NS tenants. SLG solution provides controllability of 
-      network functionss for manipulation of NSs intensively, and it can be expected to emphasize the manageability of NSIs in such cases.
+      network functions for manipulation of NSs intensively, and it can be expected to emphasize the manageability of NSIs in such cases.
       </t> 
 
       <t>
@@ -414,7 +435,7 @@
 
 <figure anchor="fig_E2E-NSI"
         title="E2E-NSI composed of multiple NSSIs">
-  <artwork>
+  <artwork align="center"><![CDATA[
   
                                E2E-NSI
           ________________________A_________________________
@@ -447,7 +468,7 @@
       * Legend
         APL: Application   
 
-  </artwork>
+ ]]> </artwork>
 </figure>
       
 
@@ -486,8 +507,8 @@
 
     <section title="Architecture of Network Slicing System">
       <t>
-      NSs are composed of several (virtual) network functions and links, and the charactaristics of each NS 
-      are based on the assumed service. Also, some of NSs are deployed accross multiple administrative domains. 
+      NSs are composed of several (virtual) network functions and links, and the characteristics of each NS 
+      are based on the assumed service. Also, some of NSs are deployed across multiple administrative domains. 
       For deploying the appropriate NSs based on each service requirements, a management system, which enables 
       to control network resources totally within a domain, and interaction between such management systems are 
       required. 
@@ -495,12 +516,14 @@
       
       <t>
       An SLG is a network function, and SLGs are installed at edge of NSSIs. NSs are dynamically created, 
-      deleted, and moved depending on requests from network opertor orNS tenants. Therefore, some SLGs would be 
+      deleted, and moved depending on requests from network operator or NS tenants. Therefore, some SLGs would be 
       required to be VNF for flexible deployment.
       </t>
       
       <t>
-      This section describes overview of NS management system architecture (<xref target="NS-MS"/>) .  
+      This section describes overview of NS management system architecture (<xref target="NS-MS"/>) .  It refers 
+      <xref target="NFV-Architectural-Framework"/> and <xref target="OSM-White-Paper"/> for management of 
+      whole of NS and vNFs, and <xref target="RFC8453"/> and [I-D.ejj-teas-ns-framework].
       </t>
       
       <section anchor="NS-MS" title="Network Slice Management System Architecture">
@@ -510,24 +533,18 @@
 
 <figure anchor="fig_NS-Mng-Arch"
         title="Overview of NS Management Architecture">
-  <artwork><![CDATA[
+  <artwork align="center"><![CDATA[
   
   NS Tenant
     |
- . .|. . . . . . . . . . . . . . . . . . . . .
-. +-v---------+                               .
-. |Portal/GUI +--+                            .
-. +-+---------+  |                            .   . . . . . . . . .
-.   |          +-v-----------------------+    .  . +------------+  .
-.   |          |CSS-Mngr./TNS-Orch.      |<------->|CSS-M/TNS-O |  .
-.   |          +-+-------+---------------+    .  . +-+--------+-+  .
-.   |            |       |                    .  .   |        |    .
-. +-v-----+      |       |                    .  . +-v-----+  |    .
-. |BSS/OSS|<-----+       |                    .  . |BSS/OSS|  |    .
-. +-+-----+              |                    .  . +-+-----+  |    .
-.   |                    |                    .  .   |        |    .
-. +-v--------------------v-----------+        .  . +-v--------v-+  .
-. |  E2E-Orch./Network Service-Orch. |        .  . |E2E-O/NS-O  |  .
+    |                                   +------------+
+ . .|. . . . . . . . . . . . . . . . . .| . . .   . .|. . . . . . .
+. +-v-----+                             |     .  . +-v-----+       .
+. |BSS/OSS|                             |     .  . |BSS/OSS|       .
+. +-+-----+                             |     .  . +-+-----+       .
+.   |                                   |     .  .   |             .
+. +-v--------------------------------+  |     .  . +-v----------+  .
+. |  Network Service-Orchestrator    +--+     .  . |E2E-O/NS-O  +- .
 . +-+--------------------+-----------+        .  . +-+--------+-+  .
 .   |                    |                    .  .   |        |    .
 . +-v----------------+ +-v----------------+   .  .       :         .
@@ -540,7 +557,7 @@
 . +-+------++-+------+ +-+------++-+------+   .
 .   |         |          |         |          .
 . +-v------++-v------+ +-v------++-v------+   .
-. |Network ||Server  | |Network ||Server  |   .
+. |Network ||Compute | |Network ||Compute |   .
 . |Elements||Resource| |Elements||Resource|.. .
 . |in      ||in      | |in      ||in      |   .
 . |Domain#1||Domain#1| |Domain#2||Domain#2|   .
@@ -548,36 +565,31 @@
  . . . . . . . . . . . . . . . . . . . . . . . 
   Administrative Domain#1
 
-                 CSS-Mngr./CSS-M:Cross-Segment Slice Manager
-                 TNS-Orch./TNS-O:Transport Network Slice Orchestrator
   ]]></artwork>
 </figure>
 
       <t>
-      Orchestrators manage whole resources including network elements and server resources (i.e., routing, 
-      bandwidth, compute or storage).
-      In this figure, the resources including network elements and server resources are managed by resource orchestrators 
-      installed in each domain, and the E2E-orchestrator and network service orchestrator handle resource orchestrators.
+      Orchestrators manage whole resources including network elements and compute resources (i.e., routing, 
+      bandwidth, network functions).
+      In this figure, the resources are managed by resource orchestrators installed in each domain, and the network 
+      service orchestrator operates resource orchestrators. A resource orchestrator includes modules for handling 
+      each resource type, such as NFVO (ref. <xref target="OSM-White-Paper"/>) and Transport Slice Controller/TSC 
+      (ref. [I-D.ejj-teas-ns-framework]). These orchestrators has recursive structure, and a network service orchestrator 
+      sometimes control other network service orchestrators in other administrative domains.
       </t>
       
       <t>
-      NSs are requested from NS tenants via the portal system and the order of creations of an NS is given to 
-      the E2E orchestrator from the portal system via BSS/OSS. When an NS across multiple administrative domains 
-      are requested, the portal system that received the request forwards the order to create NSSIs to the other 
-      infrastructure providers' systems via Cross-Segment Slice Manager. The details of COMS architecture are described 
-      in the architecture document ([I-D.qiang-coms-architecture]).
+      NSs are requested from NS tenants via BSS/OSS and the order to create an NS is given to 
+      orchestrators. Orchestrators manipulate network elements and compute resouces via controllers. When an 
+      NS across multiple administrative domains are requested, the network service orchestrator request orchestrators in 
+      other administrative domains to create NSSIs.
       </t>
       
       <t>
       SLGs are also controlled via orchestrators. An SLG basically belongs to a network element, and it might also 
-      belong to server resource if it runs as a VNF. (The position of SLG deployed as a VNF is shown in 
-      <xref target="app2"/>.)
+      belong to compute resource if it runs as a VNF. 
       </t>
-      
-      <t>
-      The information model used in this architecture is described in information model document 
-      (<xref target="I-D.qiang-coms-netslicing-information-model"/>).
-      </t>
+     
       </section>
     
       
@@ -817,7 +829,8 @@
         <section title="Traffic Monitoring">
         <t>
         An SLG shall support monitoring of traffic amount and latency as a mechanism for checking whether each of the accomodated NSs 
-        is satisfying its SLA. When an NS can't fulfill its SLA, the SLG MUST send a notification to any listening system.
+        is satisfying its SLO. When an NS can't fulfill its SLO, the SLG MUST send a notification to any listening system. A use case where 
+        the traffic monitoring of SLGs is used for such closed loop schem is introduced in <xref target="I-D.pedro-nmrg-intelligent-reasoning"/>
         </t>
         </section>
 
@@ -888,7 +901,7 @@
  NSSIs and to handle traffic on slices. In some cases, an SLG-D  is composed  of several physical devices and/or 
  virtual instances. Function types supported by SLG-D are listed <xref target="SLG-Req"/>. 
  SLG controller (SLG-C) accomodates multiple SLG Data plane entities via its southbound interface, and sets 
- configurations into each SLG-D. SLG-C also has a northbound interface and it provides accesses to two 
+ configurations into each SLG-D. SLG-C also has a northbound interface(NBI) and it provides accesses to two 
  endpoints: higher operation systems such as orchestrator, and to external customers and tenants which 
  own their NSSIs. Then, functionality and controllability exposed to customers/tenants ashould be limited, 
  and the access must be secure (i.e., authentication and admission control should be supported). 
@@ -910,9 +923,9 @@
     |  SLG Controller  |
     +---------+--------+
               |
-        +-----+-----+
-        |           |
-        |           +------------------------------+
+        +-----+------------------------------------+
+        |                                          |
+        |                                          |
         |                                          |
         |                                          |
   +-----+----------------------------+             |
@@ -928,6 +941,11 @@
 ]]></artwork>
 </figure>
 
+<t>
+An example of data model for customers/tenants is shown in <xref target="app2"/>
+</t>
+
+
 </section>
 
   <section title="Deployment of SLG">
@@ -937,7 +955,7 @@
     
     <section title="Examples of Components Required to Maintain SLG Functions">
     <t>
-    For providing E2E-NSs on existing network infrastructures, some components located at boundaries of 
+    For providing E2E-NSIs on existing network infrastructures, some components located at boundaries of 
     domains are required to have the same set of functionality as an SLG. Examples of such components 
     in each domain type are described below.
     </t>
@@ -961,13 +979,13 @@
   
     <section title="SLG Types Depending on Locations on NS">
     <t>
-    There are mainly three types of SLG for creating E2E-NS across multiple administrative domains.
+    There are mainly three types of SLG for creating E2E-NSI across multiple administrative domains.
     The requirements of each SLG type are listed in <xref target="app1"/>.
     </t>
     
       <section title="Edge SLG(E-SLG)">
       <t>
-      E-SLG is located at an edge of an E2E-NS, and supports identification, classification and authentication 
+      E-SLG is located at an edge of an E2E-NSI, and supports identification, classification and authentication 
       of user traffic in addition to fundamental SLG functions, such as transport and isolation. 
       Also, it might be required to have capabilities for services delivered on an NS.
       </t>
@@ -1173,7 +1191,7 @@ GW: Gateway Node
 </figure>
     
       </section>
-      
+ <!--     
       <section title="Software vs. Hardware">
       <t>
       An SLG can be created as either a software or hardware function. NSs are virtual networks created 
@@ -1183,7 +1201,6 @@ GW: Gateway Node
       performance or sufficient throughput for carrier-grade networks with software function. 
       In addition, it would be difficult to implement sufficient QoS control mechanisms with general 
       servers, because they requires special hardware structures. 
-      An example of position of SLG in NFV environment is described in <xref target="app2"/>.
       </t>
 
       <t>
@@ -1196,6 +1213,7 @@ GW: Gateway Node
       usages or locations.
       </t>
       </section>
+-->
     </section>
     
     
@@ -1316,7 +1334,7 @@ GW: Gateway Node
     &RFC8453;
     &RFC8459;
     &I-D.draft-netslices-usecases;
-    &I-D.draft-qiang-coms-netslicing-information-model;
+<!--&I-D.draft-qiang-coms-netslicing-information-model;-->
 <!--&I-D.draft-qiang-coms-architecture;-->
     &I-D.draft-ietf-spring-segment-routing-mpls;
     &I-D.draft-ietf-6man-segment-routing-header;
@@ -1324,6 +1342,7 @@ GW: Gateway Node
     &I-D.draft-defoy-coms-subnet-interconnection;
     &I-D.draft-homma-slice-provision-models;
     &I-D.draft-rokui-5g-transport-slice;
+    &I-D.draft-pedro-nmrg-intelligent-reasoning;
     
       
       <reference anchor='NFV-Architectural-Framework'
@@ -1361,6 +1380,19 @@ GW: Gateway Node
         <date month="September" year="2018"/> 
         </front> 
       </reference> 
+
+       <reference anchor='TS.28.530-3GPP'  target="http://ftp.3gpp.org//Specs/archive/28_series/28.530/28530-100.zip">
+        <front>
+        <title>3GPP TS 28.530 (V1.0.0): Management and orchestration of networks and network slicing; Concepts,
+               use cases and requirements (work in progress)</title>
+        <author>
+        <organization>
+        3rd Generation Partnership Project (3GPP)
+        </organization>
+        </author>
+        <date month="June" year="2018"/>
+        </front>
+      </reference>
 
       <reference anchor='TS.36.300-3GPP'
        target='http://www.qtc.jp/3GPP/Specs/36300-830.pdf'>
@@ -1416,7 +1448,7 @@ GW: Gateway Node
       
 <figure anchor="Req-List"
 title="List of Requirements for each SLG">
-  <artwork><![CDATA[
+  <artwork align="center"><![CDATA[
 +---------------++-------+-------+-------+----------------+
 |               || E-SLG |IS-SLG |ID-SLG | Reference      |
 +=========================================================+
@@ -1460,7 +1492,7 @@ title="List of Requirements for each SLG">
 |IF to Service  ||  O    |  O    |  O    |Section 5.2.2.1.|
 |Manager        ||       |       |       |                |
 +---------------++-------+-------+-------+----------------+
-|Telemetory     ||  O    |  O    |  O    |Section 5.2.2.2.|
+|Telemetry      ||  O    |  O    |  O    |Section 5.2.2.2.|
 +---------------++-------+-------+-------+----------------+
                 M: Mandatry, O: Optional, - : Not Required
                 
@@ -1468,65 +1500,90 @@ title="List of Requirements for each SLG">
 </figure>
      
     </section>
-    
+
 <section anchor="app2"
-    		title="Position of SLG on ETSI NFV MANO">
+            title="Example of Data Model for Service Management">
       <t>
-      Some SLGs and the controllers are deployed and run on NSs as VNFs. 
-      An arechitecture for managing lifecycle of VNFs is under standardization 
-      in ETS NFV MANO.
-      </t>
-      
-      <t>
-      The mapping of SLG as a VM into ETSI NFV MANO architecture is described in 
-      <xref target="fig_SLG-Position-MANO"/>. In some cases, SLGs are deployed 
-      with containor. VNFs are parts of NS compositions and 
-      NFV orchestrator would be controlled by upper control entities such as 
-      resource orchestrator.
+      An SLG provides customers/tenants some capabilities: NS allocation, change of forwarding policy for user traffic 
+      on the target NS, reporting telemetry information of the target NS, etc. Examples of tree diagram of data model 
+      for service management is shown in <xref target="tree-diagram-slg-svc-man"/>.
       </t>
 
-<figure anchor="fig_SLG-Position-MANO"
-		title="Position of SLG as a VM on ETSI NFV MANO">
-  <artwork><![CDATA[
-  
-         OSS/BSS, Service-Orch, Resource-Orch
-           |                |
-           |                |
-         +-v-------+      +-v----------+ 
-         |SLG-Ctrl |<-----+ NFV Orch.  | 
-         +-+-------+      +-+----------+ 
-           |                |           
-         ,-v-------.        |           
-         |  SLG    |        |           
-         :=========:      +-v----------+ 
-         |VM(GstOS)|<-----+VNF Manager | 
-         `---------'      +-+----------+ 
-         +---------+        |           
-         | HostOS/ |      +-v----------+ 
-         | Server  |<-----| VIM        | 
-         +---------+      +------------+ 
-  ]]></artwork>
+<figure anchor="tree-diagram-slg-svc-man"
+		title="Tree Diagram of Data Model for Service Management">
+  <artwork align="left"><![CDATA[
+
+module: slg-svc-man
+  +--rw ns-allocation
+     +--rw flow-id
+     |  +--rw ipv4?	boolean
+     |  |  +--rw src-ipv4-address?	inet:ipv4-address
+     |  |  +--rw dst-ipv4-address? 	inet:ipv4-address
+     |  +--rw ipv6?	boolean
+     |  |  +--rw src-ipv6-prefix?	inet:ipv6-prefix
+     |  |  +--rw dst-ipv6-prefix?	inet:ipv6-prefix
+     |  +--rw src-port?		inet:port-number
+     |  +--rw dst-port?		inet:port-number
+     |  +--rw protocol?		uint8
+     |  +--rw option-tag?
+     |     +--rw tag-id*	string
+     +--rw nssi-id?	string
+
+
+  +--rw uflow-policy
+     +--rw flow-id?
+     |  +--rw ipv4?	boolean
+     |  |  +--rw src-ipv4-address?	inet:ipv4-address
+     |  |  +--rw dst-ipv4-address? 	inet:ipv4-address
+     |  +--rw ipv6?	boolean
+     |  |  +--rw src-ipv6-prefix?	inet:ipv6-prefix
+     |  |  +--rw dst-ipv6-prefix?	inet:ipv6-prefix
+     |  +--rw src-port?		inet:port-number
+     |  +--rw dst-port?		inet:port-number
+     |  +--rw protocol?		uint8
+     |  +--rw option-tag?
+     |     +--rw tag-id*	string
+     +--rw forwarding-policy
+        +--rw traffic-class		inet8
+        +--rw guaranteed-rate-value?	uint64
+        +--rw permissible-jitter-value? uint64
+        +--rw service-function-path-id? inet24
+
+  +--ro telemery-report
+     +--ro ns-id
+        +--ro nssi-id*	string
+           +--ro flow-id*
+              +--ro packet-received?	uint64
+	      +--ro packet-sent?        uint64
+	      +--ro bytes-received?	uint64
+	      +--ro bytes-sent?		uint64
+              +--ro latency?
+                 +--ro endpoint-id*	string
+
+
+]]></artwork>
 </figure>
-    
-    </section>
-<!-- add app describing complement of UPF in 3GPP--> 
+
+</section>
 
     <section anchor="app3"
-            title="Complemention of Network Slicing in 3GPP">
+            title="Complementation of Network Slicing in 3GPP">
     <t>
     The 3GPP 5GS is natively support network slicing (ref. <xref target="TS.23.501-3GPP"/>, and UPF provides some functions 
-    for manuplation of NSs, such as NS selection, QoS control, traffic steering, etc. 3GPP is responsible for standatdizing 
+    as SLG, such as NS selection, QoS control, traffic steering, etc. 3GPP is responsible for standardizing 
     user plane manipulation for mobility management, and interworking with transport on underlay network and external 
     networks of 5GS  such as DNs is out of scope in 3GPP.
     </t>
 
     <t>
-    SLG will provide  complemental definitions of functions and interfaces for providing E2E-NSI including 5GS.  A way of 
-    interworking between transport NS and RAN/UPF is described in <xref target="I-D.rokui-5g-transport-slice"/>.
+    SLG concept will provide  complemental definitions of functions and interfaces for providing E2E-NSI including 5GS.  A way of 
+    interworking between transport slice and RAN/UPF is described in <xref target="I-D.rokui-5g-transport-slice"/>. In this case, 
+    RAN/UPF and transport slice endpoints connected to them behave as ID-SLGs. 
     </t>
 
     <t>
-    Further study is TBD.
+    Another way for interworking is RAN/UPF support functionalities of SLG for transport slice. However, this is not supported in 
+    3GPP standards, and may inhibit multi-vendor implementation.
     </t>
 
     </section>
