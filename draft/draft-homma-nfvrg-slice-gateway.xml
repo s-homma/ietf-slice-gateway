@@ -42,6 +42,7 @@
 <!ENTITY I-D.draft-homma-slice-provision-models SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-homma-slice-provision-models-00.xml">
 <!ENTITY I-D.draft-rokui-5g-transport-slice SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-rokui-5g-transport-slice-00.xml">
 <!ENTITY I-D.draft-pedro-nmrg-intelligent-reasoning SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-pedro-nmrg-intelligent-reasoning-01.xml">
+<!ENTITY I-D.draft-henry-tsvwg-diffserv-to-qci  SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-henry-tsvwg-diffserv-to-qci-03.xml">
 
 ]> 
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?> 
@@ -523,7 +524,8 @@
       <t>
       This section describes overview of NS management system architecture (<xref target="NS-MS"/>) .  It refers 
       <xref target="NFV-Architectural-Framework"/> and <xref target="OSM-White-Paper"/> for management of 
-      whole of NS and vNFs, and <xref target="RFC8453"/> and [I-D.ejj-teas-ns-framework].
+      whole of NS and VNFs, and <xref target="RFC8453"/> and [I-D.ejj-teas-ns-framework] for transport network/slice 
+      manipulation.
       </t>
       
       <section anchor="NS-MS" title="Network Slice Management System Architecture">
@@ -544,7 +546,7 @@
 . +-+-----+                             |     .  . +-+-----+       .
 .   |                                   |     .  .   |             .
 . +-v--------------------------------+  |     .  . +-v----------+  .
-. |  Network Service-Orchestrator    +--+     .  . |E2E-O/NS-O  +- .
+. |  Network Service-Orchestrator    +--+     .  . |  NS-Orch.  +- .
 . +-+--------------------+-----------+        .  . +-+--------+-+  .
 .   |                    |                    .  .   |        |    .
 . +-v----------------+ +-v----------------+   .  .       :         .
@@ -574,7 +576,7 @@
       In this figure, the resources are managed by resource orchestrators installed in each domain, and the network 
       service orchestrator operates resource orchestrators. A resource orchestrator includes modules for handling 
       each resource type, such as NFVO (ref. <xref target="OSM-White-Paper"/>) and Transport Slice Controller/TSC 
-      (ref. [I-D.ejj-teas-ns-framework]). These orchestrators has recursive structure, and a network service orchestrator 
+      (ref. [I-D.ejj-teas-ns-framework]). These orchestrators have recursive structure, and a network service orchestrator 
       sometimes control other network service orchestrators in other administrative domains.
       </t>
       
@@ -586,8 +588,8 @@
       </t>
       
       <t>
-      SLGs are also controlled via orchestrators. An SLG basically belongs to a network element, and it might also 
-      belong to compute resource if it runs as a VNF. 
+      SLGs are also controlled via orchestrators. An SLG can be implemented in a network element, or may be hosted on a compute 
+      resource if it runs as a VNF. 
       </t>
      
       </section>
@@ -763,7 +765,9 @@
           preconfigured setting and provide packet scheduling based on the QoS parameter for providing 
           priority control. The field that SLG refers may vary depending on the specification of the underlay 
           network. For example, COS value is remarked in L2 segments; on the other hand, 
-          DSCP value is remarked in L3 segments. 
+          DSCP value is remarked in L3 segments.  In mobility networks standardized by 3GPP, QoS	
+ 	      class is managed by using QoS Class Identifier (QCI) or 5G QoS Identifier (5QI) conveyed in extention header of user plane	
+ 	      protocol, and they mapped to DSCP (<xref target="I-D.henry-tsvwg-diffserv-to-qci"/>).
           </t>
           </list>
         </t>
@@ -1182,7 +1186,7 @@ GW: Gateway Node
     NSSI#1      |SLG#1|      NSSI#2
     _________   |     |    ___________
    _________/-->|     |-->/__________
-    NSSI#3   |     |      NSSI#4
+    NSSI#3      |     |      NSSI#4
                 |     |
        :        |     |         :
                 +-----+
@@ -1196,8 +1200,7 @@ GW: Gateway Node
       <t>
       An SLG can be created as either a software or hardware function. NSs are virtual networks created 
       depending on requests from external NS tenants, and thus software would be more compatible with 
-      usage for NSs in terms of flexibility or manageability. Moreover, it enables to increase or decrease for 
-      each function if SLG is composed of combination of several components. However, it is difficult to provide high 
+      usage for NSs in terms of flexibility, scalability and manageability. However, it is difficult to provide high 
       performance or sufficient throughput for carrier-grade networks with software function. 
       In addition, it would be difficult to implement sufficient QoS control mechanisms with general 
       servers, because they requires special hardware structures. 
@@ -1285,7 +1288,8 @@ GW: Gateway Node
 
     <section title="Northbound Interface for Customers/Tenants">
     <t>
-    TBD
+    SLG-C can provide some capabilities, such as NS allocation and	obtaining of NS status, for customers/tenants to 
+    handle their own NSs.  An example of data models for this interface is shown in	<xref target="app2"/>.
     </t>
     </section>
     </section>
@@ -1343,6 +1347,7 @@ GW: Gateway Node
     &I-D.draft-homma-slice-provision-models;
     &I-D.draft-rokui-5g-transport-slice;
     &I-D.draft-pedro-nmrg-intelligent-reasoning;
+    &I-D.draft-henry-tsvwg-diffserv-to-qci;
     
       
       <reference anchor='NFV-Architectural-Framework'
@@ -1514,23 +1519,30 @@ title="List of Requirements for each SLG">
   <artwork align="left"><![CDATA[
 
 module: slg-svc-man
-  +--rw ns-allocation
-     +--rw flow-id
-     |  +--rw ipv4?	boolean
-     |  |  +--rw src-ipv4-address?	inet:ipv4-address
-     |  |  +--rw dst-ipv4-address? 	inet:ipv4-address
-     |  +--rw ipv6?	boolean
-     |  |  +--rw src-ipv6-prefix?	inet:ipv6-prefix
-     |  |  +--rw dst-ipv6-prefix?	inet:ipv6-prefix
-     |  +--rw src-port?		inet:port-number
-     |  +--rw dst-port?		inet:port-number
-     |  +--rw protocol?		uint8
-     |  +--rw option-tag?
-     |     +--rw tag-id*	string
-     +--rw nssi-id?	string
+ +--rw ns-allocation
+    +--rw current-ns-id?
+    |  +--rw ns-id? string
+    |     +--rw nssi-id*	string
+    +--rw flow-id
+    |  +--rw ipv4?	boolean
+    |  |  +--rw src-ipv4-address?	inet:ipv4-address
+    |  |  +--rw dst-ipv4-address? 	inet:ipv4-address
+    |  +--rw ipv6?	boolean
+    |  |  +--rw src-ipv6-prefix?	inet:ipv6-prefix
+    |  |  +--rw dst-ipv6-prefix?	inet:ipv6-prefix
+    |  +--rw src-port?		inet:port-number
+    |  +--rw dst-port?		inet:port-number
+    |  +--rw protocol?		uint8
+    |  +--rw option-tag?
+    |     +--rw tag-id*	string
+    +--rw new-ns-id?    string
+          +--rw ns-id?
+             +--rw nssi-id*	string
 
 
   +--rw uflow-policy
+     +--rw ns-id?   string
+     |  +--nssi-id*	string
      +--rw flow-id?
      |  +--rw ipv4?	boolean
      |  |  +--rw src-ipv4-address?	inet:ipv4-address
@@ -1550,7 +1562,7 @@ module: slg-svc-man
         +--rw service-function-path-id? inet24
 
   +--ro telemery-report
-     +--ro ns-id
+     +--ro ns-id?   string
         +--ro nssi-id*	string
            +--ro flow-id*
               +--ro packet-received?	uint64
