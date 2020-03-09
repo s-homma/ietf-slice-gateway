@@ -834,7 +834,7 @@
         <t>
         An SLG shall support monitoring of traffic amount and latency as a mechanism for checking whether each of the accomodated NSs 
         is satisfying its SLO. When an NS can't fulfill its SLO, the SLG MUST send a notification to any listening system. A use case where 
-        the traffic monitoring of SLGs is used for such closed loop schem is introduced in <xref target="I-D.pedro-nmrg-intelligent-reasoning"/>
+        the traffic monitoring of SLGs is used for such closed loop schema is introduced in <xref target="I-D.pedro-nmrg-intelligent-reasoning"/>
         </t>
         </section>
 
